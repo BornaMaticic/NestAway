@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BookingForm from '../components/BookingForm.js'
 import NavBar from '../components/NavBar'
+import PropertyList from '../components/PropertyList'
 
 class siteContainer extends Component{
 
@@ -54,6 +55,7 @@ class siteContainer extends Component{
       <NavBar/>
       // <BookingForm properties={this.handleBookingCriteriaSubmit} />
       <BookingForm/>
+      <PropertyList properties = {this.state.properties}/>
       </>
     )
   }
