@@ -22,4 +22,5 @@ public class CustomerController {
     public List<Customer> getAllCustomers(){
         return customerRepository.findAll();
     }
+
 }
