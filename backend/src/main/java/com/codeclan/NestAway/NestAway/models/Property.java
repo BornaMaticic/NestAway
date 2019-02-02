@@ -3,6 +3,7 @@ package com.codeclan.NestAway.NestAway.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,13 +37,16 @@ public class Property {
     @OneToMany(mappedBy = "property")
     private List<Booking> bookings;
 
-    public Property(String name, String address, int capacity, double price, RatingType rating, List<Booking> bookings) {
+    public Property(String name, String address, int capacity, double price, RatingType rating) {
         this.name = name;
         this.address = address;
         this.capacity = capacity;
         this.price = price;
         this.rating = rating;
-        this.bookings = bookings;
+        this.bookings = new ArrayList<Booking>();
+    }
+
+    public Property() {
     }
 
     public Long getId() {

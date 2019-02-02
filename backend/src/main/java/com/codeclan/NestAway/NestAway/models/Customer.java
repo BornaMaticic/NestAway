@@ -2,6 +2,7 @@ package com.codeclan.NestAway.NestAway.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.source.tree.LambdaExpressionTree;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,11 +22,11 @@ public class Customer {
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
-    private List<Customer> customers;
+    private List<Booking> bookings;
 
     public Customer(String name) {
         this.name = name;
-        this.customers = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
     public Customer() {
@@ -47,11 +48,12 @@ public class Customer {
         this.name = name;
     }
 
-    public List<Customer> getCustomers() {
-        return customers;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
+
