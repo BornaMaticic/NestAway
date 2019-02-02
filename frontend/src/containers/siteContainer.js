@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BookingForm from '../components/BookingForm.js'
+import NavBar from '../components/NavBar'
 
 class siteContainer extends Component{
 
@@ -20,12 +21,12 @@ class siteContainer extends Component{
           capacity: 10
         },
       ],
-      filteredProperties: [];
+      filteredProperties: []
 
     }
     this.criteria = null;
 
-    this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
+    // this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
     this.filteredProperties = this.filterProperties.bind(this);
   }
 
@@ -40,16 +41,20 @@ class siteContainer extends Component{
   }
 
 
-  handleBookingCriteriaSubmit(criteria){
-    this.criteria = criteria;
-    this.filterProperties;
-  }
+  // handleBookingCriteriaSubmit(criteria){
+  //   this.criteria = criteria;
+  //   this.filterProperties;
+  // }
 
 
 
   render(){
     return (
-      <BookingForm properties={this.handleBookingCriteriaSubmit} />
+      <>
+      <NavBar/>
+      // <BookingForm properties={this.handleBookingCriteriaSubmit} />
+      <BookingForm/>
+      </>
     )
   }
 
