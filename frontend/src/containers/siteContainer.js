@@ -27,8 +27,8 @@ class siteContainer extends Component{
     }
     this.criteria = null;
 
-    // this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
-    this.filteredProperties = this.filterProperties.bind(this);
+    this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
+    this.filterProperties = this.filterProperties.bind(this);
   }
 
   filterProperties(){
@@ -42,10 +42,10 @@ class siteContainer extends Component{
   }
 
 
-  // handleBookingCriteriaSubmit(criteria){
-  //   this.criteria = criteria;
-  //   this.filterProperties;
-  // }
+  handleBookingCriteriaSubmit(criteria){
+    this.setState({criteria: criteria});
+    this.filterProperties();
+  }
 
 
 
@@ -53,8 +53,7 @@ class siteContainer extends Component{
     return (
       <>
       <NavBar/>
-      // <BookingForm properties={this.handleBookingCriteriaSubmit} />
-      <BookingForm/>
+      <BookingForm properties={this.handleBookingCriteriaSubmit} />
       <PropertyList properties = {this.state.properties}/>
       </>
     )

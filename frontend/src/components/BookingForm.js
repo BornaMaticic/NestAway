@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 class BookingForm extends Component {
   constructor(props){
     super(props);
+
+    this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
   }
 
   handleCriteriaSubmit(event){
@@ -11,7 +13,7 @@ class BookingForm extends Component {
       "customerName": event.target.customerName.value,
       "capacity": event.target.capacity.value,
     }
-    this.props.properties(criteria);
+    this.props.handleBookingCriteriaSubmit(criteria);
   }
 
 
