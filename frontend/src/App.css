@@ -1,6 +1,7 @@
 body{
   margin: 0;
   padding: 0;
+  justify-content: center;
 }
 
 ul {
@@ -31,12 +32,27 @@ li a:hover:not(.active) {
   background-color: #4CAF50;
 }
 
+form{
+  padding-top: 50px;
+  padding-left: 50px;
+  display: flex;
+  max-width: 30vw;
+  flex-direction:column;
+}
+
 .property-list{
-  /* color: red; */
   display:flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .property{
-  flex-grow: 20vw;
+  width: 20vw;
+  padding: 5px;
+}
+
+p{
+  text-align: left;
 }
