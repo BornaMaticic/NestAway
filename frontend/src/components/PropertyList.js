@@ -16,7 +16,6 @@ class PropertyList extends Component {
 
      return (
        <div className="property-list">
-       <h1>Hello Me</h1>
          {propertyNodes}
        </div>
      )
