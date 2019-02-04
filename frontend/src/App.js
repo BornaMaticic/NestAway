@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SiteContainer from './containers/SiteContainer';
+import SiteContainer from './containers/siteContainer';
 import './App.css';
 
 class App extends Component {

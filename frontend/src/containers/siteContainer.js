@@ -21,13 +21,13 @@ class SiteContainer extends Component{
     this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
   }
 
-  // componentDidMount(){
-  //   let request = new Request()
-  //   // TODO check api route with backend
-  //   request.get('/api/properties').then((data) => {
-  //     this.setState({properties: data._embedded.properties})
-  //   })
-  // }
+  componentDidMount(){
+    let request = new Request()
+    // TODO check api route with backend
+    request.get('/api/properties').then((data) => {
+      this.setState({properties: data._embedded.properties})
+    })
+  }
 
 
   handleBookingCriteriaSubmit(criteria){
@@ -52,8 +52,6 @@ class SiteContainer extends Component{
       )
     }
 
-    // TODO render properties list
-    // <PropertyList properties = {this.state.properties}/>
 
   }
 
