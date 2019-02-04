@@ -38,6 +38,11 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
+
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+//        String startDate = sdf.format(new Date());
+//        System.out.println(startDate);
+
         DateFormat checkIn = new SimpleDateFormat("dd-MM-yy");
         String startDate = "24-07-2018";
         Date date = null;
