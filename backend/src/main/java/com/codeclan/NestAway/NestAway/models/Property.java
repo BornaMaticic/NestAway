@@ -27,8 +27,8 @@ public class Property implements Serializable {
     @Column(name = "capacity")
     private int capacity;
 
-
-
+    @Column(name = "image_url")
+    private String imageUrl;
 
     @Column(name = "price")
     private double price;
@@ -40,20 +40,26 @@ public class Property implements Serializable {
     @OneToMany(mappedBy = "property")
     private List<Booking> bookings;
 
-    public Property(String name, String address, int capacity, double price, RatingType rating) {
+    public Property(String name, String address, int capacity, double price, RatingType rating, String imageUrl) {
         this.name = name;
         this.address = address;
         this.capacity = capacity;
         this.price = price;
         this.rating = rating;
-
+        this.imageUrl = imageUrl;
         this.bookings = new ArrayList<Booking>();
     }
 
     public Property() {
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public Long getId() {
         return id;

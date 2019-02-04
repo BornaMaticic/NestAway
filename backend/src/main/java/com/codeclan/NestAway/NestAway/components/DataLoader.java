@@ -61,8 +61,8 @@ public class DataLoader implements ApplicationRunner {
         customerRepository.save(customer2);
 
 
-        Property property1 = new Property("Cottage", "12 Baker Street", 5, 150, RatingType.THREE);
-        Property property2 = new Property("Apartment", "30a Barn Terrace", 2, 90, RatingType.FOUR);
+        Property property1 = new Property("Cottage", "12 Baker Street", 5, 150, RatingType.THREE, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
+        Property property2 = new Property("Apartment", "30a Barn Terrace", 2, 90, RatingType.FOUR, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
         propertyRepository.save(property1);
         propertyRepository.save(property2);
 
