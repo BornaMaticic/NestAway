@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import Request from '../helpers/request.js'
+import Request from '../helpers/Request.js'
 
 import BookingForm from '../components/BookingForm.js';
 import NavBar from '../components/NavBar.js';

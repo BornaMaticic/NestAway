@@ -23,10 +23,10 @@ class BookingForm extends Component {
     return (
       <Fragment>
       <form onSubmit={this.handleCriteriaSubmit}>
-      <input type="text" placeholder="Customer name" name="customerName"/>
-      <input type="text" placeholder="Capacity" name="capacity"/>
-      <input type="number" placeholder="Min price per night" name="minPricePerNight"/>
-      <input type="number" placeholder="Max price per night" name="maxPricePerNight"/>
+      <input type="text" placeholder="Customer name" name="customerName" required/>
+      <input type="text" placeholder="Capacity" name="capacity" required/>
+      <input type="number" placeholder="Min price per night" name="minPricePerNight" required/>
+      <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
 
       <button type="submit">Save</button>
       </form>
