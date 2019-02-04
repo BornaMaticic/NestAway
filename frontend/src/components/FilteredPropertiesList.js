@@ -1,9 +1,7 @@
 import React from 'react';
 import Property from './Property.js';
 
-
-const FilteredPropertyList = (props) => {
-  console.log(props);
+const FilteredPropertiesList = (props) => {
 
   const properties = props.filteredProperties.map(property => {
     return (
@@ -13,12 +11,11 @@ const FilteredPropertyList = (props) => {
     )
   })
 
-	return (
-		<ul>
-		 	{properties}
-		</ul>
-	)
-
+  return (
+    <ul>
+      {properties}
+    </ul>
+  )
 }
 
-export default FilteredPropertyList;
+export default FilteredPropertiesList;

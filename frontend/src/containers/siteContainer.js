@@ -4,10 +4,10 @@ import Request from '../helpers/Request.js'
 
 import BookingForm from '../components/BookingForm.js';
 import NavBar from '../components/NavBar.js';
-import PropertyList from '../components/PropertyList.js';
+import PropertiesList from '../components/PropertiesList.js';
 
 
-class siteContainer extends Component{
+class SiteContainer extends Component{
 
   constructor(props){
     super(props);
@@ -21,13 +21,13 @@ class siteContainer extends Component{
     this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
   }
 
-  componentDidMount(){
-    let request = new Request()
-    // TODO check api route with backend
-    request.get('/api/properties').then((data) => {
-      this.setState({properties: data._embedded.properties})
-    })
-  }
+  // componentDidMount(){
+  //   let request = new Request()
+  //   // TODO check api route with backend
+  //   request.get('/api/properties').then((data) => {
+  //     this.setState({properties: data._embedded.properties})
+  //   })
+  // }
 
 
   handleBookingCriteriaSubmit(criteria){
@@ -44,18 +44,17 @@ class siteContainer extends Component{
     render(){
       return (
         <div>
-        <Fragment>
         <NavBar/>
         <BookingForm
         filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit} />
-        <PropertyList properties = {this.state.properties}/>
-        </Fragment>
+        <PropertiesList properties={this.state.properties} />
         </div>
       )
     }
 
+    // TODO render properties list
     // <PropertyList properties = {this.state.properties}/>
 
   }
 
-  export default siteContainer;
+  export default SiteContainer;
