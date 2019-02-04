@@ -16,7 +16,7 @@
 *.rar
 
 # IntelliJ stuff
-#.idea/
+.idea/
 out/
 target/
 #.idea_modules/# Created by .ignore support plugin (hsz.mobi)
