@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -32,6 +33,11 @@ public class BookingController {
     @GetMapping("/property/{property_id}")
     public List<Booking> findAllBookingsByPropertyId(@PathVariable Long property_id){
         return bookingRepository.findAllBookingsByPropertyId(property_id);
+    }
+
+    @GetMapping("/date/{date}")
+    public List<Booking> findAllBookingsByStartDate(@PathVariable Date date){
+        return bookingRepository.findAllBookingsByStartDate(date);
     }
 
 }

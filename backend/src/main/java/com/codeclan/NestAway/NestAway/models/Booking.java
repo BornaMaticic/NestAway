@@ -1,6 +1,7 @@
 package com.codeclan.NestAway.NestAway.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "booking")
@@ -14,7 +15,11 @@ public class Booking {
     @Column(name = "total_price")
     private double totalPrice;
 
-    //TODO: date colum
+    @Column(name="start_date")
+    private Date startDate;
+
+    @Column(name="end_date")
+    private Date endDate;
 
     @ManyToOne
     @JoinColumn(name="customer_id", nullable = false)
@@ -24,10 +29,12 @@ public class Booking {
     @JoinColumn(name="property_id", nullable = false)
     private Property property;
 
-    public Booking(double totalPrice, Customer customer, Property property) {
+    public Booking(double totalPrice, Customer customer, Property property, Date startDate, Date endDate) {
         this.totalPrice = totalPrice;
         this.customer = customer;
         this.property = property;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public Booking() {
@@ -35,6 +42,22 @@ public class Booking {
 
     public Long getId() {
         return id;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public void setId(Long id) {

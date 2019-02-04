@@ -12,6 +12,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Component
 
 public class DataLoader implements ApplicationRunner {
@@ -33,6 +38,23 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
+        DateFormat checkIn = new SimpleDateFormat("dd-MM-yy");
+        String startDate = "24-07-2018";
+        Date date = null;
+        try {
+            date = checkIn.parse(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        DateFormat checkOut = new SimpleDateFormat("dd-MM-yy");
+        String endDate = "30-07-2018";
+        Date date1 = null;
+        try {
+            date1 = checkOut.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Customer customer1 = new Customer("Rebekah");
         Customer customer2 = new Customer("Borna");
         customerRepository.save(customer1);
@@ -44,8 +66,8 @@ public class DataLoader implements ApplicationRunner {
         propertyRepository.save(property1);
         propertyRepository.save(property2);
 
-        Booking booking1 = new Booking(300, customer1, property1);
-        Booking booking2= new Booking(270, customer2, property2);
+        Booking booking1 = new Booking(300, customer1, property1,date, date1);
+        Booking booking2= new Booking(270, customer2, property2, date, date1);
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
 

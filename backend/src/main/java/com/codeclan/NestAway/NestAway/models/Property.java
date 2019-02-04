@@ -3,13 +3,16 @@ package com.codeclan.NestAway.NestAway.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
 
 @Entity
 @Table(name = "properties")
 
-public class Property {
+public class Property implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +27,7 @@ public class Property {
     @Column(name = "capacity")
     private int capacity;
 
-//TODO:add image column
+
 
 
     @Column(name = "price")
@@ -43,11 +46,14 @@ public class Property {
         this.capacity = capacity;
         this.price = price;
         this.rating = rating;
+
         this.bookings = new ArrayList<Booking>();
     }
 
     public Property() {
     }
+
+
 
     public Long getId() {
         return id;
