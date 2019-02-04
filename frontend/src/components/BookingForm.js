@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import FilteredPropertyList from '../components/PropertyList.js';
+import FilteredPropertiesList from '../components/FilteredPropertiesList.js';
 
 class BookingForm extends Component {
   constructor(props){
@@ -30,9 +30,8 @@ class BookingForm extends Component {
 
       <button type="submit">Save</button>
       </form>
-      <FilteredPropertyList
-      filteredProperties={this.props.filteredProperties}
-      />
+
+      <FilteredPropertiesList filteredProperties={this.props.filteredProperties} />
 
       </Fragment>
     )
