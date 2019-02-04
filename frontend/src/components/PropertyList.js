@@ -5,7 +5,10 @@ import Property from './Property.js';
 const PropertyList = (props) => {
   console.log(props);
 
-  const properties = props.filteredProperties.map(property => {
+// edit what this renders when in use.
+// site container needs to pass api data here. then map that data below to render properties
+
+  const properties = props.properties.map(property => {
     return (
       <li key={property.id} className="component-item">
         <Property property={property} />
