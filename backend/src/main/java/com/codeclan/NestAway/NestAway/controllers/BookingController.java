@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/bookings")
+@RequestMapping(value = "/api/bookings")
 
 public class BookingController {
 
@@ -20,10 +20,10 @@ public class BookingController {
     @Autowired
     BookingRepository bookingRepository;
 
-    @GetMapping
-    public List<Booking> getAllBookings(){
-        return bookingRepository.findAll();
-    }
+//    @GetMapping("/bookings")
+//    public List<Booking> getAllBookings(){
+//        return bookingRepository.findAll();
+//    }
 
     @GetMapping("/customer/{customer_id}")
     public List<Booking> findAllBookingsByCustomerId(@PathVariable Long customer_id){

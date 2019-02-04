@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/properties")
+@RequestMapping(value = "/api/properties")
 
 public class PropertyController {
 
@@ -17,10 +17,10 @@ public class PropertyController {
     @Autowired
     PropertyRepository propertyRepository;
 
-    @GetMapping
-    public List<Property> getAllProperties(){
-        return propertyRepository.findAll();
-    }
+//    @GetMapping("/properties")
+//    public List<Property> getAllProperties(){
+//        return propertyRepository.findAll();
+//    }
 
 
 }
