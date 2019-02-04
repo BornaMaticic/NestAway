@@ -12,6 +12,8 @@ class BookingForm extends Component {
     const criteria = {
       "customerName": event.target.customerName.value,
       "capacity": event.target.capacity.value,
+      "minPricePerNight": event.target.minPricePerNight,
+      "maxPricePerNight": event.target.maxPricePerNight
     }
     this.props.onCriteriaSubmit(criteria);
   }
@@ -23,6 +25,8 @@ class BookingForm extends Component {
       <form onSubmit={this.handleCriteriaSubmit}>
       <input type="text" placeholder="Customer name" name="customerName"/>
       <input type="text" placeholder="Capacity" name="capacity"/>
+      <input type="number" placeholder="Min price per night" name="minPricePerNight"/>
+      <input type="number" placeholder="Max price per night" name="maxPricePerNight"/>
 
       <button type="submit">Save</button>
       </form>

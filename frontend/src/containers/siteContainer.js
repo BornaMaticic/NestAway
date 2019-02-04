@@ -10,17 +10,20 @@ class siteContainer extends Component{
         {
           id: 1,
           name: "Rose Cottage",
-          capacity: 4
+          capacity: 4,
+          pricePerNight: 60.00
         },
         {
           id: 2,
           name: "Ivy Cottage",
-          capacity: 5
+          capacity: 5,
+          pricePerNight: 75.00
         },
         {
           id: 3,
           name: "Holly House",
-          capacity: 10
+          capacity: 10,
+          pricePerNight: 80.00
         }
       ],
       filteredProperties: []
@@ -34,7 +37,6 @@ class siteContainer extends Component{
 
   handleBookingCriteriaSubmit(criteria){
     this.criteria = criteria;
-    // this.filterProperties;
     let selectedProperties = this.state.properties;
     selectedProperties = selectedProperties.filter(property =>
       property.capacity >= this.criteria.capacity);
