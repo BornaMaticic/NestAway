@@ -43,7 +43,7 @@ public class DataLoader implements ApplicationRunner {
 //        String startDate = sdf.format(new Date());
 //        System.out.println(startDate);
 
-        DateFormat checkIn = new SimpleDateFormat("dd-MM-yy");
+        DateFormat checkIn = new SimpleDateFormat("dd-MM-yyyy");
         String startDate = "24-07-2018";
         Date date = null;
         try {
@@ -52,7 +52,7 @@ public class DataLoader implements ApplicationRunner {
             e.printStackTrace();
         }
 
-        DateFormat checkOut = new SimpleDateFormat("dd-MM-yy");
+        DateFormat checkOut = new SimpleDateFormat("dd-MM-yyyy");
         String endDate = "30-07-2018";
         Date date1 = null;
         try {

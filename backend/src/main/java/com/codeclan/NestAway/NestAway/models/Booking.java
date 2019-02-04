@@ -1,6 +1,8 @@
 package com.codeclan.NestAway.NestAway.models;
 
 import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -44,16 +46,19 @@ public class Booking {
         return id;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        return df.format(startDate);
+
     }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public String getEndDate() {
+        DateFormat dfe = new SimpleDateFormat("dd-MM-yyyy");
+        return dfe.format(endDate);
     }
 
     public void setEndDate(Date endDate) {

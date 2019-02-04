@@ -3,6 +3,7 @@ package com.codeclan.NestAway.NestAway.controllers;
 import com.codeclan.NestAway.NestAway.models.Booking;
 import com.codeclan.NestAway.NestAway.repositories.bookings.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,7 @@ public class BookingController {
     }
 
     @GetMapping("/date/{date}")
-    public List<Booking> findAllBookingsByStartDate(@PathVariable Date date){
+    public List<Booking> findAllBookingsByStartDate(@PathVariable @DateTimeFormat(pattern="dd-MM-yyy") Date date){
         return bookingRepository.findAllBookingsByStartDate(date);
     }
 
