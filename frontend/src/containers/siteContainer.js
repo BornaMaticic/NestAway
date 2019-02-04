@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import BookingForm from '../components/BookingForm.js'
-import NavBar from '../components/NavBar'
-import PropertyList from '../components/PropertyList'
+import BookingForm from '../components/BookingForm.js';
+import NavBar from '../components/NavBar.js';
+import PropertyList from '../components/PropertyList.js';
 
 class siteContainer extends Component{
 
@@ -54,12 +54,12 @@ class siteContainer extends Component{
       <NavBar/>
       <BookingForm
       filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit} />
-      <PropertyList properties = {this.state.properties}/>
       </>
     )
   }
 
-  
+  // <PropertyList properties = {this.state.properties}/>
+
 }
 
 export default siteContainer;

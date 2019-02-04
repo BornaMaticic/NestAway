@@ -30,13 +30,15 @@ class BookingForm extends Component {
 
       <button type="submit">Save</button>
       </form>
-
       <PropertyList
       filteredProperties={this.props.filteredProperties}
       />
+
       </Fragment>
     )
   }
+
+
 
 
 }
