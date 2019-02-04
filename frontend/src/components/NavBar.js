@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render(){
     return(
       <>
       <ul>
+
         <li>
-        <a>Home</a>
+          <Link to="/">Home</Link>
         </li>
 
         <li>
-        <a>Book A Customer</a>
+          <Link to="/bookingform">Book A Property</Link>
         </li>
-        
+
         <li>
-        <a>View All Bookings</a>
+          <Link to="/bookings">View All Upcoming Bookings</Link>
         </li>
+
+        <li>
+          <Link to="/properties">View All Properties</Link>
+        </li>
+
       </ul>
       </>
     )
