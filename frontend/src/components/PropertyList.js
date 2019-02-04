@@ -1,6 +1,7 @@
 import React from 'react';
 import Property from './Property.js';
 
+
 const PropertyList = (props) => {
   console.log(props);
 
