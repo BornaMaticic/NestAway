@@ -1,26 +1,24 @@
-import React, { Component } from 'react';
-import Property from './Property'
+import React from 'react';
+import Property from './Property.js';
 
-class PropertyList extends Component {
 
-  render() {
-     const propertyNodes = this.props.properties.map(property => {
-       return (
-         <Property
-         propertyName={property.name}
-         propertyCapacity={property.capacity}
-         key={property.id}>
-         </Property>
-       );
-     });
+const PropertyList = (props) => {
+  console.log(props);
 
-     return (
-       <div className="property-list">
-         {propertyNodes}
-       </div>
-     )
-   }
+  const properties = props.filteredProperties.map(property => {
+    return (
+      <li key={property.id} className="component-item">
+        <Property property={property} />
+      </li>
+    )
+  })
 
-};
+	return (
+		<ul>
+		 	{properties}
+		</ul>
+	)
+
+}
 
 export default PropertyList;

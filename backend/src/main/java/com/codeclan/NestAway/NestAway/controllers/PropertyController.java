@@ -21,4 +21,6 @@ public class PropertyController {
     public List<Property> getAllProperties(){
         return propertyRepository.findAll();
     }
+
+
 }

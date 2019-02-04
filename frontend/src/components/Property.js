@@ -1,15 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Property extends Component {
-  render() {
-    return (
-      <div className="property">
-        <h4>{this.props.propertyName}</h4>
-        <p>{this.props.propertyCapacity}</p>
-      </div>
-    );
-  }
 
+const Property = (props) => {
+
+  const {name, capacity } = props.property
+  
+  return (
+    <div className="component">
+      <h2>{name}</h2>
+      <p>Capacity: {capacity}</p>
+    </div>
+  )
 }
+
 
 export default Property;
