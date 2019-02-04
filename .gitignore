@@ -16,12 +16,12 @@
 *.rar
 
 # IntelliJ stuff
-.idea/
+#.idea/
 out/
 target/
-.idea_modules/# Created by .ignore support plugin (hsz.mobi)
+#.idea_modules/# Created by .ignore support plugin (hsz.mobi)
 #NestAway.iml
-mvnw
-mvnw.cmd
+#mvnw
+#mvnw.cmd
 # pom.xml
 
