@@ -13,7 +13,7 @@ public class Booking implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
 
     @Column(name = "total_price")
     private double totalPrice;
@@ -44,7 +44,7 @@ public class Booking implements Serializable {
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public String getStartDate() {
@@ -66,8 +66,8 @@ public class Booking implements Serializable {
         this.endDate = endDate;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public double getTotalPrice() {
