@@ -34,7 +34,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
             cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
             cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
 
-
             properties = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -100,9 +99,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         return  properties;
     }
 
-
-
-
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
         List<Property> results = null;
@@ -119,7 +115,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
             cr.add(checkIfExistingBookingDatesBeforeQuery);
             cr.add(checkIfExistingBookingDatesAfterQuery);
-
 
             cr.setProjection(Projections.property("id"));
 
@@ -138,40 +133,24 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
 
 
-//
-//    @Transactional
+    @Transactional
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
+        List<Property> freeOnDates = findAvailablePropertiesByDate(startDate, endDate);
+        List<Property> canBook = new ArrayList<Property>();
 
-        List <Property> allPropertiesForThisDate  = findAvailablePropertiesByDate(startDate,endDate);
+        for (Property property : freeOnDates) {
+            if (property.getPrice() <= price) {
+                canBook.add(property);
+            }
+        }
+      
+         for (Property property1 : canBook) {
+            if (property1.getCapacity() < capacity) {
+                canBook.remove(property1);
+            }
 
+        }
 
-        return new ArrayList<Property>();
+        return canBook;
     }
-//
-//        List <Property> allProperties = getAllProperties();
-//        List <Property> notFreeProperties = findAvailablePropertiesByDate(startDate, endDate);
-//        List<Property> canBook = null;
-//
-//        for (property in allProperties ) {
-//
-//             if property.id != notFreeProperties.id
-//                    canBook += property;
-//             return canBook;
-//        }
-//
-//      findAllPropertiesByCapacityAndPrice(capacity, price);
-//
-//
-//    }
-//
-//    take results from above
-//            filter through all properties
-//            return the properties whos id do not = these properties id
-//
-//    then filter by capacity, price
-//
-
-
-
-
 }

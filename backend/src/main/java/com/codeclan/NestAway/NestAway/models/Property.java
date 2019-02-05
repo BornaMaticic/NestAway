@@ -25,13 +25,13 @@ public class Property implements Serializable {
     private String address;
 
     @Column(name = "capacity")
-    private int capacity;
+    protected int capacity;
 
     @Column(name = "image_url")
     private String imageUrl;
 
     @Column(name = "price")
-    private double price;
+    protected double price;
 
     @Column(name = "rating")
     private RatingType rating;
