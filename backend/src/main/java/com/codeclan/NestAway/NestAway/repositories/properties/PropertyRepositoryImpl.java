@@ -30,16 +30,9 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         try {
             Criteria cr = session.createCriteria(Property.class);
             cr.createAlias("bookings", "bookingAlias");
-<<<<<<< HEAD
-            cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
-            cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
-=======
-
             cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
             cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
 
-            cr.add(Restrictions.between("bookingAlias.date", startDate, endDate));
->>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
             properties = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -73,8 +66,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-<<<<<<< HEAD
-=======
+
     @Transactional
     public List<Property> getAllBookedPropertiesByDate(Date startDate, Date endDate){
         List<Property> properties = null;
@@ -108,8 +100,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-
->>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
 
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
@@ -145,7 +135,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-<<<<<<< HEAD
+
 //
 //    @Transactional
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
@@ -179,8 +169,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 //    then filter by capacity, price
 //
 
-=======
->>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
 
 
 
