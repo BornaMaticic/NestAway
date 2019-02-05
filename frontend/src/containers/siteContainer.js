@@ -24,9 +24,11 @@ class SiteContainer extends Component{
     }
     this.selectedCustomer = null;
     this.criteria = null;
+    this.selectedProperty = null;
 
     this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
     this.setSelectedCustomer = this.setSelectedCustomer.bind(this);
+    this.setSelectedProperty = this.setSelectedProperty.bind(this);
   }
 
   componentDidMount(){
@@ -59,6 +61,12 @@ class SiteContainer extends Component{
 
   setSelectedCustomer(index){
     this.selectedCustomer = index;
+    console.log(this.selectedCustomer);
+  }
+
+  setSelectedProperty(index){
+    this.selectedProperty = index;
+    console.log(this.selectedProperty);
   }
 
   render(){
@@ -74,6 +82,7 @@ class SiteContainer extends Component{
         filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
         existingCustomers={this.state.customers}
         setSelectedCustomer={this.setSelectedCustomer}
+        setSelectedProperty={this.setSelectedProperty}
         />
       }
       />

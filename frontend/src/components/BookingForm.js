@@ -7,6 +7,7 @@ class BookingForm extends Component {
     super(props);
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
     this.handleCustomerSelect = this.handleCustomerSelect.bind(this);
+    this.handlePropertySelect = this.handlePropertySelect.bind(this);
   }
 
   handleCriteriaSubmit(event){
@@ -22,6 +23,10 @@ class BookingForm extends Component {
 
   handleCustomerSelect(index){
     this.props.setSelectedCustomer(index);
+  }
+
+  handlePropertySelect(index){
+    this.props.setSelectedProperty(index);
   }
 
 
@@ -40,7 +45,10 @@ class BookingForm extends Component {
       <button type="submit">Display available nests</button>
       </form>
 
-      <FilteredPropertiesList filteredProperties={this.props.filteredProperties} />
+      <FilteredPropertiesList
+        filteredProperties={this.props.filteredProperties}
+        handlePropertySelect={this.handlePropertySelect}
+      />
 
       </Fragment>
     )
