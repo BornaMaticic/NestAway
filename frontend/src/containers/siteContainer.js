@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
 import Bookings from '../components/Bookings.js';
+import CustomerForm from '../components/CustomerForm.js';
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -41,7 +42,13 @@ class SiteContainer extends Component{
       console.log(this.state.filteredProperties);
     }
 
+    handleCustomerPost(customerInfo){
+      const request = new Request();
+      request.post('/api/customers', customerInfo).then(() => {
+        window.location = '/customers'
+      })
 
+      }
 
     render(){
       return (
@@ -54,6 +61,13 @@ class SiteContainer extends Component{
             <Route path="/bookingform"
               render={() => <BookingForm
                 filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
+                />
+              }
+            />
+
+            <Route path="/customerform"
+              render={() => <CustomerForm
+                handleCustomerPost={this.handleCustomerPost}
                 />
               }
             />
