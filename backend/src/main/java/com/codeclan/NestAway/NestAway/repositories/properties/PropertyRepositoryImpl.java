@@ -30,16 +30,10 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         try {
             Criteria cr = session.createCriteria(Property.class);
             cr.createAlias("bookings", "bookingAlias");
-<<<<<<< HEAD
-            cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
-            cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
-=======
 
             cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
             cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
 
-            cr.add(Restrictions.between("bookingAlias.date", startDate, endDate));
->>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
             properties = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -57,7 +51,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
         try {
             Criteria cr = session.createCriteria(Property.class);
-//            cr.createAlias("property", "propertyAlias");
             cr.add(Restrictions.lt("price", price));
             cr.add(Restrictions.ge("capacity", capacity));
             results = cr.list();
@@ -73,8 +66,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-<<<<<<< HEAD
-=======
+
     @Transactional
     public List<Property> getAllBookedPropertiesByDate(Date startDate, Date endDate){
         List<Property> properties = null;
@@ -109,7 +101,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
 
 
->>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
+
 
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
@@ -128,7 +120,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
             cr.add(checkIfExistingBookingDatesBeforeQuery);
             cr.add(checkIfExistingBookingDatesAfterQuery);
 
-
             cr.setProjection(Projections.property("id"));
 
             if (!cr.list().isEmpty()){
@@ -145,43 +136,25 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-<<<<<<< HEAD
-//
-//    @Transactional
-    public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
+    @Transactional
+    public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price) {
 
-        List <Property> allPropertiesForThisDate  = findAvailablePropertiesByDate(startDate,endDate);
+        List<Property> freeOnDates = findAvailablePropertiesByDate(startDate, endDate);
+        List<Property> canBook = new ArrayList<Property>();
 
+        for (Property property : freeOnDates) {
+            if (property.getPrice() <= price) {
+                canBook.add(property);
+            }
+        }
 
-        return new ArrayList<Property>();
+        for (Property property1 : canBook) {
+            if (property1.getCapacity() < capacity) {
+                canBook.remove(property1);
+            }
+
+        }
+
+        return canBook;
     }
-//
-//        List <Property> allProperties = getAllProperties();
-//        List <Property> notFreeProperties = findAvailablePropertiesByDate(startDate, endDate);
-//        List<Property> canBook = null;
-//
-//        for (property in allProperties ) {
-//
-//             if property.id != notFreeProperties.id
-//                    canBook += property;
-//             return canBook;
-//        }
-//
-//      findAllPropertiesByCapacityAndPrice(capacity, price);
-//
-//
-//    }
-//
-//    take results from above
-//            filter through all properties
-//            return the properties whos id do not = these properties id
-//
-//    then filter by capacity, price
-//
-
-=======
->>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
-
-
-
 }
