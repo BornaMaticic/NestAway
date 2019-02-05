@@ -12,15 +12,24 @@ class NavBar extends Component {
         </li>
 
         <li>
-          <Link to="/bookingform">Book A Property</Link>
+          <Link to="/bookingform">Book A Nest</Link>
         </li>
 
         <li>
-          <Link to="/bookings">View All Upcoming Bookings</Link>
+          <Link to="/bookings">Upcoming Bookings</Link>
         </li>
 
         <li>
-          <Link to="/properties">View All Properties</Link>
+          <Link to="/customerform">New Customer</Link>
+        </li>
+
+        <li>
+          <Link to="/customers">Customers</Link>
+        </li>
+
+
+        <li>
+          <Link to="/properties">Nests</Link>
         </li>
 
       </ul>
