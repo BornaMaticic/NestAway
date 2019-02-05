@@ -1,6 +1,7 @@
 package com.codeclan.NestAway.NestAway.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
 @Entity
 @Table(name = "booking")
 
-public class Booking {
+public class Booking implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

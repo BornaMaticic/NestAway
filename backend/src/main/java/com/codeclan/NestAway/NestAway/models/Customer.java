@@ -2,30 +2,35 @@ package com.codeclan.NestAway.NestAway.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.source.tree.LambdaExpressionTree;
+
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name ="customers")
 
-public class Customer {
+public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "firstName")
+    private String firstName;
+
+    @Column(name = "lastName")
+    private String lastName;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 
-    public Customer(String name) {
-        this.name = name;
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.bookings = new ArrayList<>();
     }
 
@@ -40,12 +45,20 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public List<Booking> getBookings() {

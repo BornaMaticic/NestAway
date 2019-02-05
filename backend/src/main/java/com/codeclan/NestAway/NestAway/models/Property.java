@@ -116,4 +116,8 @@ public class Property implements Serializable {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
+
+    public void addBookings(Booking booking){
+        this.bookings.add(booking);
+    }
 }

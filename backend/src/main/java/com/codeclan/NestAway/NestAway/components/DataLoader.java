@@ -39,45 +39,44 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args) {
 
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
-//        String startDate = sdf.format(new Date());
-//        System.out.println(startDate);
+
 
         DateFormat checkIn = new SimpleDateFormat("dd-MM-yyyy");
         String startDate = "24-07-2018";
-        Date date = null;
+        Date startingDate = null;
         try {
-            date = checkIn.parse(startDate);
+            startingDate = checkIn.parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
         DateFormat checkOut = new SimpleDateFormat("dd-MM-yyyy");
         String endDate = "30-07-2018";
-        Date date1 = null;
+        Date endingDate = null;
         try {
-            date1 = checkOut.parse(endDate);
+            endingDate = checkOut.parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Customer customer1 = new Customer("Rebekah");
-        Customer customer2 = new Customer("Borna");
+        Customer customer1 = new Customer("Rebekah", "Dixon");
+        Customer customer2 = new Customer("Borna", "Maticic");
         customerRepository.save(customer1);
         customerRepository.save(customer2);
 
 
         Property property1 = new Property("Cottage", "12 Baker Street", 5, 150, RatingType.THREE, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
         Property property2 = new Property("Apartment", "30a Barn Terrace", 2, 90, RatingType.FOUR, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
+        Property property3 = new Property("House", "50a Barn Terrace", 4, 80, RatingType.FOUR, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
         propertyRepository.save(property1);
         propertyRepository.save(property2);
+        propertyRepository.save(property3);
 
-        Booking booking1 = new Booking(300, customer1, property1,date, date1);
-        Booking booking2= new Booking(270, customer2, property2, date, date1);
+        Booking booking1 = new Booking(300, customer1, property1,startingDate, endingDate);
+        Booking booking2= new Booking(270, customer2, property2, startingDate, endingDate);
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
 
     }
-
 
 
 }

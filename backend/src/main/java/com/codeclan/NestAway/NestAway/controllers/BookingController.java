@@ -37,8 +37,8 @@ public class BookingController {
     }
 
     @GetMapping("/date/{date}")
-    public List<Booking> findAllBookingsByStartDate(@PathVariable @DateTimeFormat(pattern="dd-MM-yyy") Date date){
-        return bookingRepository.findAllBookingsByStartDate(date);
+    public List<Booking> findAllBookingsByStartDate(@PathVariable @DateTimeFormat(pattern="dd-MM-yyyy") Date startDate){
+        return bookingRepository.findAllBookingsByStartDate(startDate);
     }
 
 }
