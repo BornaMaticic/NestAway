@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import FilteredPropertiesList from '../components/FilteredPropertiesList.js';
 import CustomerSelector from './CustomerSelector.js';
 
+
 class BookingForm extends Component {
   constructor(props){
     super(props);

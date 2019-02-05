@@ -2,6 +2,8 @@ import React, {Component, Fragment} from 'react';
 import FilteredProperty from './FilteredProperty.js';
 import Grid from '@material-ui/core/Grid';
 
+
+
 class FilteredPropertiesList extends Component{
   constructor(props){
     super(props);
@@ -33,7 +35,7 @@ class FilteredPropertiesList extends Component{
 
     return (
       <Fragment>
-        <Grid container spacing={12} style={{padding:12}}>
+        <Grid container spacing={16} style={{padding:16}}>
           {properties}
         </Grid>
         <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
