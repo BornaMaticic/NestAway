@@ -40,12 +40,20 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-
         DateFormat checkIn = new SimpleDateFormat("dd-MM-yyyy");
         String startDate = "24-07-2018";
         Date startingDate = null;
         try {
             startingDate = checkIn.parse(startDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        String startDate2 = "29-07-2018";
+        Date startingDate2 = null;
+        try {
+            startingDate2 = checkIn.parse(startDate2);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -72,7 +80,7 @@ public class DataLoader implements ApplicationRunner {
         propertyRepository.save(property3);
 
         Booking booking1 = new Booking(300, customer1, property1,startingDate, endingDate);
-        Booking booking2= new Booking(270, customer2, property2, startingDate, endingDate);
+        Booking booking2= new Booking(270, customer2, property2, startingDate2, endingDate);
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
 

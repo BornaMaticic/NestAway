@@ -74,18 +74,22 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
             cr.createAlias("bookings", "bookingAlias");
 
-            Criterion checkStartDateOfExistingBooking = Restrictions.not(Restrictions.between("bookingAlias.startDate", startDate, endDate));
-            Criterion checkEndDateOfExistingBooking = Restrictions.not(Restrictions.between("bookingAlias.endDate", startDate, endDate));
-            Criterion checkIfQueryBetweenExistingBookingDates = Restrictions.not(Restrictions.and(Restrictions.gt("bookingAlias.startDate", startDate), Restrictions.lt("bookingAlias.endDate", endDate)));
+//            Criterion checkStartDateOfExistingBooking = Restrictions.not(Restrictions.between("bookingAlias.startDate", startDate, endDate));
+//            Criterion checkEndDateOfExistingBooking = Restrictions.not(Restrictions.between("bookingAlias.endDate", startDate, endDate));
+            Criterion checkIfExistingBookingDatesBeforeQuery = Restrictions.and(Restrictions.lt("bookingAlias.startDate", startDate), Restrictions.lt("bookingAlias.endDate", startDate));
+            Criterion checkIfExistingBookingDatesAfterQuery = Restrictions.and(Restrictions.gt("bookingAlias.startDate", endDate), Restrictions.gt("bookingAlias.endDate", endDate));
+//            Criterion propertyHasNoBookings = Restrictions.isEmpty("bookings");
+                    //cr.booking.size == 0
 
-            cr.add(checkStartDateOfExistingBooking);
-            cr.add(checkEndDateOfExistingBooking);
-            cr.add(checkIfQueryBetweenExistingBookingDates);
+//            cr.add(checkStartDateOfExistingBooking);
+//            cr.add(checkEndDateOfExistingBooking);
+            cr.add(checkIfExistingBookingDatesBeforeQuery);
+            cr.add(checkIfExistingBookingDatesAfterQuery);
 
             cr.setProjection(Projections.property("id"));
 
             if (!cr.list().isEmpty()){
-                crB.add(Restrictions.not(Restrictions.in("id", cr.list())));
+                crB.add(Restrictions.in("id", cr.list()));
             }
 
             results = crB.list();
