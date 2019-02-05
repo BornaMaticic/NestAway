@@ -2,12 +2,15 @@ import React, { Component, Fragment } from 'react';
 
 import Request from '../helpers/Request.js'
 
-import BookingForm from '../components/BookingForm.js';
+import Home from '../components/Home.js';
 import NavBar from '../components/NavBar.js';
-import PropertyList from '../components/PropertyList.js';
+import BookingForm from '../components/BookingForm.js';
+import PropertiesList from '../components/PropertiesList.js';
+import Bookings from '../components/Bookings.js';
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-class siteContainer extends Component{
+class SiteContainer extends Component{
 
   constructor(props){
     super(props);
@@ -23,7 +26,6 @@ class siteContainer extends Component{
 
   componentDidMount(){
     let request = new Request()
-    // TODO check api route with backend
     request.get('/api/properties').then((data) => {
       this.setState({properties: data._embedded.properties})
     })
@@ -43,19 +45,34 @@ class siteContainer extends Component{
 
     render(){
       return (
-        <div>
-        <Fragment>
-        <NavBar/>
-        <BookingForm
-        filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit} />
-        <PropertyList properties = {this.state.properties}/>
-        </Fragment>
-        </div>
+        <Router>
+          <Fragment>
+            <NavBar/>
+
+            <Route exact path="/" component={Home} />
+
+            <Route path="/bookingform"
+              render={() => <BookingForm
+                filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
+                />
+              }
+            />
+
+            <Route path="/properties"
+              render={() => <PropertiesList
+                properties={this.state.properties}
+                />
+              }
+            />
+
+            <Route path="/bookings" component={Bookings} />
+
+          </Fragment>
+        </Router>
       )
     }
 
-    // <PropertyList properties = {this.state.properties}/>
 
   }
 
-  export default siteContainer;
+  export default SiteContainer;
