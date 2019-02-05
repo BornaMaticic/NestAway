@@ -32,9 +32,9 @@ class SiteContainer extends Component{
     request.get('/api/properties').then((propertiesData) => {
       this.setState({properties: propertiesData._embedded.properties})
     });
-    // request.get('/api/customers').then((customersData) => {
-    //   this.setState({customers: customersData._embedded.properties})
-    // })
+    request.get('/api/customers').then((customersData) => {
+      this.setState({customers: customersData._embedded.customers})
+    })
     console.log("api component Mounted");
   }
 
