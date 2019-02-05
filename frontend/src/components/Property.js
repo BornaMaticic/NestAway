@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const Property = (props) => {
 
   const {name, capacity } = props.property
