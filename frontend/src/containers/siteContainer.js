@@ -51,7 +51,7 @@ class SiteContainer extends Component{
     handleCustomerPost(customerInfo){
       const request = new Request();
       request.post('/api/customers', customerInfo).then(() => {
-        window.location = '/customers'
+        window.location = '/bookingform'
       })
 
       }
@@ -67,6 +67,7 @@ class SiteContainer extends Component{
             <Route path="/bookingform"
               render={() => <BookingForm
                 filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
+                existingCustomers={this.state.customers}
                 />
               }
             />

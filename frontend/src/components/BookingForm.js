@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import FilteredPropertiesList from '../components/FilteredPropertiesList.js';
+import CustomerSelector from './CustomerSelector.js';
 
 class BookingForm extends Component {
   constructor(props){
@@ -23,6 +24,7 @@ class BookingForm extends Component {
     return (
       <Fragment>
       <form onSubmit={this.handleCriteriaSubmit}>
+      <CustomerSelector customers={this.props.existingCustomers} />
       <input type="text" placeholder="Customer name" name="customerName" required/>
       <input type="text" placeholder="Capacity" name="capacity" required/>
       <input type="number" placeholder="Min price per night" name="minPricePerNight" required/>
