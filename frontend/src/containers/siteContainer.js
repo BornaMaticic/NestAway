@@ -22,9 +22,11 @@ class SiteContainer extends Component{
       customers: []
 
     }
+    this.selectedCustomer = null;
     this.criteria = null;
 
     this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
+    this.setSelectedCustomer = this.setSelectedCustomer.bind(this);
   }
 
   componentDidMount(){
@@ -48,59 +50,63 @@ class SiteContainer extends Component{
       console.log(this.state.filteredProperties);
     }
 
-    handleCustomerPost(customerInfo){
-      const request = new Request();
-      request.post('/api/customers', customerInfo).then(() => {
-        window.location = '/bookingform'
-      })
-
-      }
-
-    render(){
-      return (
-        <Router>
-          <Fragment>
-            <NavBar/>
-
-            <Route exact path="/" component={Home} />
-
-            <Route path="/bookingform"
-              render={() => <BookingForm
-                filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
-                existingCustomers={this.state.customers}
-                />
-              }
-            />
-
-            <Route path="/customerform"
-              render={() => <CustomerForm
-                handleCustomerPost={this.handleCustomerPost}
-                />
-              }
-            />
-
-            <Route path="/customers"
-              render={() => <CustomersList
-                customers={this.state.customers}
-                />
-              }
-            />
-
-            <Route path="/properties"
-              render={() => <PropertiesList
-                properties={this.state.properties}
-                />
-              }
-            />
-
-            <Route path="/bookings" component={Bookings} />
-
-          </Fragment>
-        </Router>
-      )
-    }
-
-
+  handleCustomerPost(customerInfo){
+    const request = new Request();
+    request.post('/api/customers', customerInfo).then(() => {
+      window.location = '/bookingform'
+    })
   }
+
+  setSelectedCustomer(index){
+    this.selectedCustomer = index;
+  }
+
+  render(){
+    return (
+      <Router>
+      <Fragment>
+      <NavBar/>
+
+      <Route exact path="/" component={Home} />
+
+      <Route path="/bookingform"
+      render={() => <BookingForm
+        filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
+        existingCustomers={this.state.customers}
+        setSelectedCustomer={this.setSelectedCustomer}
+        />
+      }
+      />
+
+      <Route path="/customerform"
+      render={() => <CustomerForm
+        handleCustomerPost={this.handleCustomerPost}
+        />
+      }
+      />
+
+      <Route path="/customers"
+      render={() => <CustomersList
+        customers={this.state.customers}
+        />
+      }
+      />
+
+      <Route path="/properties"
+      render={() => <PropertiesList
+        properties={this.state.properties}
+        />
+      }
+      />
+
+      <Route path="/bookings" component={Bookings} />
+
+      </Fragment>
+      </Router>
+    )
+  }
+
+
+}
 
   export default SiteContainer;
