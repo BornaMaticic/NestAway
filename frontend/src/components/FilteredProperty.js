@@ -14,7 +14,7 @@ const FilteredProperty = (props) => {
     <div className="property">
       <h2>{name}</h2>
       <p>Capacity: {capacity}</p>
-      <button type="button" value={props.propertyId} onClick={onSelect}>Select nest</button>
+      <button type="submit" value={props.propertyId} onClick={onSelect}>Select nest</button>
     </div>
   )
 }

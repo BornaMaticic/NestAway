@@ -13,7 +13,9 @@ class FilteredPropertiesList extends Component{
   }
 
   render(){
+    console.log(this.props.filteredProperties);
     const properties = this.props.filteredProperties.map(property => {
+      console.log(property.id);
       return (
         <li key={property.id} className="property-list">
           <FilteredProperty

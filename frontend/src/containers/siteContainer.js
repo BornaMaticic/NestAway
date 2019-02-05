@@ -38,8 +38,9 @@ class SiteContainer extends Component{
     });
     request.get('/api/customers').then((customersData) => {
       this.setState({customers: customersData._embedded.customers})
+      console.log(this.state.customers);
     })
-    console.log("api component Mounted");
+
   }
 
 
@@ -49,7 +50,6 @@ class SiteContainer extends Component{
     selectedProperties = selectedProperties.filter(property =>
       property.capacity >= this.criteria.capacity);
       this.setState({filteredProperties: selectedProperties});
-      console.log(this.state.filteredProperties);
     }
 
   handleCustomerPost(customerInfo){
