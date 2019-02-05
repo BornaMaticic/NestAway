@@ -6,6 +6,7 @@ import Home from '../components/Home.js';
 import NavBar from '../components/NavBar.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
+import PropertyForm from '../components/PropertyForm.js';
 import Bookings from '../components/Bookings.js';
 import CustomerForm from '../components/CustomerForm.js';
 import CustomersList from '../components/CustomersList.js';
@@ -25,6 +26,7 @@ class SiteContainer extends Component{
     this.selectedCustomer = null;
     this.criteria = null;
     this.selectedProperty = null;
+    this.bookingInfo = null;
 
     this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
     this.setSelectedCustomer = this.setSelectedCustomer.bind(this);
@@ -59,6 +61,13 @@ class SiteContainer extends Component{
     })
   }
 
+  handlePropertyPost(propertyInfo){
+    const request = new Request();
+    request.post('/api/properties', propertyInfo).then(() => {
+      window.location = '/properties'
+    })
+  }
+
   setSelectedCustomer(index){
     this.selectedCustomer = index;
     console.log(this.selectedCustomer);
@@ -67,6 +76,18 @@ class SiteContainer extends Component{
   setSelectedProperty(index){
     this.selectedProperty = index;
     console.log(this.selectedProperty);
+  }
+
+  handleBookingPost(){
+    const confirmedBooking = {
+      "customer_id": this.selectedCustomer,
+      "property_id": this.selectedProperty
+      // TODO add the remaining booking criteria - ie dates
+    }
+    const request = new Request();
+    request.post('/api/bookings', confirmedBooking).then(() => {
+      window.location = '/bookings'
+    })
   }
 
   render(){
@@ -78,32 +99,39 @@ class SiteContainer extends Component{
       <Route exact path="/" component={Home} />
 
       <Route path="/bookingform"
-      render={() => <BookingForm
-        filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
-        existingCustomers={this.state.customers}
-        setSelectedCustomer={this.setSelectedCustomer}
-        setSelectedProperty={this.setSelectedProperty}
+        render={() => <BookingForm
+          filteredProperties={this.state.filteredProperties} onCriteriaSubmit={this.handleBookingCriteriaSubmit}
+          existingCustomers={this.state.customers}
+          setSelectedCustomer={this.setSelectedCustomer}
+          setSelectedProperty={this.setSelectedProperty}
+          handleBookingPost={this.handleBookingPost}
         />
       }
       />
 
       <Route path="/customerform"
-      render={() => <CustomerForm
-        handleCustomerPost={this.handleCustomerPost}
+        render={() => <CustomerForm
+          handleCustomerPost={this.handleCustomerPost}
         />
       }
       />
 
       <Route path="/customers"
-      render={() => <CustomersList
-        customers={this.state.customers}
+        render={() => <CustomersList
+          customers={this.state.customers}
+        />
+      }
+      />
+
+      <Route path="/propertyform"
+        render={() => <PropertyForm handlePropertyPost={this.handlePropertyPost}
         />
       }
       />
 
       <Route path="/properties"
-      render={() => <PropertiesList
-        properties={this.state.properties}
+        render={() => <PropertiesList
+          properties={this.state.properties}
         />
       }
       />

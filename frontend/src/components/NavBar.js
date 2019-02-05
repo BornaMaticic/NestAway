@@ -27,9 +27,12 @@ class NavBar extends Component {
           <Link to="/customers">Customers</Link>
         </li>
 
-
         <li>
           <Link to="/properties">Nests</Link>
+        </li>
+
+        <li>
+          <Link to="/propertyform">New Nest</Link>
         </li>
 
       </ul>

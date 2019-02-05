@@ -8,6 +8,7 @@ class BookingForm extends Component {
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
     this.handleCustomerSelect = this.handleCustomerSelect.bind(this);
     this.handlePropertySelect = this.handlePropertySelect.bind(this);
+    this.handleBooking = this.handleBooking.bind(this);
   }
 
   handleCriteriaSubmit(event){
@@ -30,24 +31,30 @@ class BookingForm extends Component {
   }
 
 
+  handleBooking(){
+    this.props.handleBookingPost();
+  }
+
+
   render() {
     return (
       <Fragment>
       <form onSubmit={this.handleCriteriaSubmit}>
-      <CustomerSelector
-        customers={this.props.existingCustomers}
-        handleCustomerSelect={this.handleCustomerSelect}
-      />
-      <input type="text" placeholder="Capacity" name="capacity" required/>
-      <input type="number" placeholder="Min price per night" name="minPricePerNight" required/>
-      <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
+        <CustomerSelector
+          customers={this.props.existingCustomers}
+          handleCustomerSelect={this.handleCustomerSelect}
+        />
+        <input type="text" placeholder="Capacity" name="capacity" required/>
+        <input type="number" placeholder="Min price per night" name="minPricePerNight" required/>
+        <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
 
-      <button type="submit">Display available nests</button>
+        <button type="submit">Display available nests</button>
       </form>
 
       <FilteredPropertiesList
         filteredProperties={this.props.filteredProperties}
         handlePropertySelect={this.handlePropertySelect}
+        handleBookingClick={this.handleBooking}
       />
 
       </Fragment>

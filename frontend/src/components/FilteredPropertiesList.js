@@ -1,15 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import FilteredProperty from './FilteredProperty.js';
 
 class FilteredPropertiesList extends Component{
   constructor(props){
     super(props);
     this.sendSelectedProperty = this.sendSelectedProperty.bind(this);
+    this.handleBookingConfirmationClick = this.handleBookingConfirmationClick.bind(this);
   }
 
 
   sendSelectedProperty(index){
     this.props.handlePropertySelect(index)
+  }
+
+  handleBookingConfirmationClick(){
+    this.props.handleBookingClick();
   }
 
   render(){
@@ -28,9 +33,12 @@ class FilteredPropertiesList extends Component{
     })
 
     return (
-      <ul>
-        {properties}
-      </ul>
+      <Fragment>
+        <ul>
+          {properties}
+        </ul>
+        <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
+      </Fragment>
     )
 
   }
