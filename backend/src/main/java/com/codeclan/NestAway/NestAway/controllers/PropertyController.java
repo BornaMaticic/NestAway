@@ -28,19 +28,26 @@ public class PropertyController {
         return propertyRepository.findAvailablePropertiesByDate(startDate, endDate);
     }
 
-<<<<<<< HEAD
+    @GetMapping("/getallbookedproperties/{startDate}/{endDate}")
+    public List<Property> getAllBookedPropertiesByDate
+            (@PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date startDate,
+             @PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date endDate){
+        return propertyRepository.getAllBookedPropertiesByDate(startDate, endDate);
+    }
+
+
     @GetMapping("/")
     public List<Property> getAllProperties(){
         return propertyRepository.findAll();
     }
-=======
-    @GetMapping("/findproperties/{capacity}/{price}")
-    public List<Property> findAllPropertiesByCapacityAndPrice (@PathVariable int capacity, @PathVariable double price){
-        return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
-    }
+
+//    @GetMapping("/findproperties/{capacity}/{price}")
+//    public List<Property> findAllPropertiesByCapacityAndPrice (@PathVariable int capacity, @PathVariable double price){
+//        return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
+//    }
 //    @GetMapping("/properties")
 //    public List<Property> getAllProperties(){
 //        return propertyRepository.findAll();
 //    }
->>>>>>> 2d9c6be51a1cc06c14c13493e077a2709adcd956
+
 }
