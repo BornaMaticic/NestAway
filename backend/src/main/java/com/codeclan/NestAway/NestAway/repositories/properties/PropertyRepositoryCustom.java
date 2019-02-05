@@ -17,9 +17,5 @@ public interface PropertyRepositoryCustom {
 
     List<Property> getAllBookedPropertiesByDate(Date startDate, Date endDate);
 
-//    List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price);
-//
-//    List<Property>findAllPropertiesByCapacityAndPrice(int capacity, double price);
-
 
 }
