@@ -5,7 +5,7 @@ const FilteredPropertiesList = (props) => {
 
   const properties = props.filteredProperties.map(property => {
     return (
-      <li key={property.id} className="component-item">
+      <li key={property.id} className="property-list">
         <Property property={property} />
       </li>
     )
