@@ -30,8 +30,16 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         try {
             Criteria cr = session.createCriteria(Property.class);
             cr.createAlias("bookings", "bookingAlias");
+<<<<<<< HEAD
             cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
             cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
+=======
+
+            cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
+            cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
+
+            cr.add(Restrictions.between("bookingAlias.date", startDate, endDate));
+>>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
             properties = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -65,6 +73,43 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
+<<<<<<< HEAD
+=======
+    @Transactional
+    public List<Property> getAllBookedPropertiesByDate(Date startDate, Date endDate){
+        List<Property> properties = null;
+        Session session = entityManager.unwrap(Session.class);
+
+        try {
+            Criteria cr = session.createCriteria(Property.class);
+            Criteria crB = session.createCriteria(Property.class);
+
+            cr.createAlias("bookings", "bookingAlias");
+
+            Criterion checkIfExistingBookingDatesBeforeQuery = Restrictions.not(Restrictions.and(Restrictions.lt("bookingAlias.startDate", startDate), Restrictions.lt("bookingAlias.endDate", startDate)));
+            Criterion checkIfExistingBookingDatesAfterQuery = Restrictions.not(Restrictions.and(Restrictions.gt("bookingAlias.startDate", endDate), Restrictions.gt("bookingAlias.endDate", endDate)));
+
+            cr.add(checkIfExistingBookingDatesBeforeQuery);
+            cr.add(checkIfExistingBookingDatesAfterQuery);
+
+            cr.setProjection(Projections.property("id"));
+
+            if (!cr.list().isEmpty()){
+                crB.add(Restrictions.in("id", cr.list()));
+            }
+
+            properties = crB.list();
+        }
+        catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+
+        return  properties;
+    }
+
+
+
+>>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
 
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
@@ -96,10 +141,11 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
             ex.printStackTrace();
         }
 
-        return results;
+        return  results;
     }
 
 
+<<<<<<< HEAD
 //
 //    @Transactional
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
@@ -133,6 +179,8 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 //    then filter by capacity, price
 //
 
+=======
+>>>>>>> a32719390c2d1f2fba993bca1caffc2fa595f227
 
 
 
