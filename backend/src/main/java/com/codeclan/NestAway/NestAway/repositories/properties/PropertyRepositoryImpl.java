@@ -40,6 +40,28 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
+    @Transactional
+    public List<Property> findAllPropertiesByCapacityAndPrice(int capacity, double price){
+        List<Property> results = null;
+        Session session = entityManager.unwrap(Session.class);
+
+        try {
+            Criteria cr = session.createCriteria(Property.class);
+//            cr.createAlias("property", "propertyAlias");
+            cr.add(Restrictions.lt("price", price));
+            cr.add(Restrictions.ge("capacity", capacity));
+            results = cr.list();
+        }
+
+        catch (HibernateException e){
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
+        return results;
+    }
+
 
     @Transactional
     public List<Property> getAllPropertiesByDate(Date startDate, Date endDate){
@@ -76,7 +98,8 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
             Criterion checkStartDateOfExistingBooking = Restrictions.not(Restrictions.between("bookingAlias.startDate", startDate, endDate));
             Criterion checkEndDateOfExistingBooking = Restrictions.not(Restrictions.between("bookingAlias.endDate", startDate, endDate));
-            Criterion checkIfQueryBetweenExistingBookingDates = Restrictions.not(Restrictions.and(Restrictions.gt("bookingAlias.startDate", startDate), Restrictions.lt("bookingAlias.endDate", endDate)));
+            Criterion checkIfQueryBetweenExistingBookingDates =
+                    Restrictions.not(Restrictions.and(Restrictions.gt("bookingAlias.startDate", startDate), Restrictions.lt("bookingAlias.endDate", endDate)));
 
             cr.add(checkStartDateOfExistingBooking);
             cr.add(checkEndDateOfExistingBooking);
@@ -95,5 +118,10 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         }
         return results;
     }
+
+
+
+
+
 
 }

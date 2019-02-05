@@ -9,4 +9,5 @@ public interface PropertyRepositoryCustom {
 
     List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate);
     List<Property>findAllPropertiesByDate(Date startDate, Date endDate);
+    List<Property>findAllPropertiesByCapacityAndPrice(int capacity, double price);
 }

@@ -28,6 +28,10 @@ public class PropertyController {
         return propertyRepository.findAvailablePropertiesByDate(startDate, endDate);
     }
 
+    @GetMapping("/findproperties/{capacity}/{price}")
+    public List<Property> findAllPropertiesByCapacityAndPrice (@PathVariable int capacity, @PathVariable double price){
+        return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
+    }
 //    @GetMapping("/properties")
 //    public List<Property> getAllProperties(){
 //        return propertyRepository.findAll();
