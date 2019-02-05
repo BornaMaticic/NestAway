@@ -46,4 +46,12 @@ public class PropertyController {
         return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
     }
 
+    @GetMapping("/findproperties/{startDate}/{endDate}/{capacity}/{price}")
+    public List<Property> findAllPropertiesByDateAndCapacityAndPrice
+            (@PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date startDate, @PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date endDate, @PathVariable int capacity, @PathVariable double price){
+        return propertyRepository.findAllPropertiesByDateAndCapacityAndPrice(startDate, endDate, capacity, price);
+    }
+
+
+
 }

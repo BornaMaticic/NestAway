@@ -16,7 +16,7 @@ public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(name = "firstName")
     private String firstName;
@@ -38,11 +38,11 @@ public class Customer implements Serializable {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Long Id) {
-        this.Id = Id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
