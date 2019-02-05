@@ -99,10 +99,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         return  properties;
     }
 
-
-
-
-
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
         List<Property> results = null;
@@ -136,9 +132,9 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-    @Transactional
-    public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price) {
 
+    @Transactional
+    public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
         List<Property> freeOnDates = findAvailablePropertiesByDate(startDate, endDate);
         List<Property> canBook = new ArrayList<Property>();
 
@@ -147,8 +143,8 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
                 canBook.add(property);
             }
         }
-
-        for (Property property1 : canBook) {
+      
+         for (Property property1 : canBook) {
             if (property1.getCapacity() < capacity) {
                 canBook.remove(property1);
             }
