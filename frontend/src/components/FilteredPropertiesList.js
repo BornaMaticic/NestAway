@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import FilteredProperty from './FilteredProperty.js';
+import Grid from '@material-ui/core/Grid';
 
 class FilteredPropertiesList extends Component{
   constructor(props){
@@ -18,25 +19,23 @@ class FilteredPropertiesList extends Component{
   }
 
   render(){
-    console.log(this.props.filteredProperties);
     const properties = this.props.filteredProperties.map(property => {
-      console.log(property.id);
       return (
-        <li key={property.id} className="property-list">
+        <Grid item xs={12} sm={6} lg={4} xl={3}>
           <FilteredProperty
             property={property}
             propertyId={property.id}
             sendSelectedProperty={this.sendSelectedProperty}
           />
-        </li>
+        </Grid>
       )
     })
 
     return (
       <Fragment>
-        <ul>
+        <Grid container spacing={12} style={{padding:12}}>
           {properties}
-        </ul>
+        </Grid>
         <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
       </Fragment>
     )

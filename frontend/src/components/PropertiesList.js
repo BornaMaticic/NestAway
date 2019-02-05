@@ -15,7 +15,7 @@ class PropertiesList extends Component {
       })
 
       return (
-        <Grid container spacing={24} style={{padding:24}}>
+        <Grid container spacing={12} style={{padding:12}}>
          {properties}
         </Grid>
       )
