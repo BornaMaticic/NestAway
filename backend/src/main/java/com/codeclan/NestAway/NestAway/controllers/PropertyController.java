@@ -28,8 +28,8 @@ public class PropertyController {
         return propertyRepository.findAvailablePropertiesByDate(startDate, endDate);
     }
 
-//    @GetMapping("/properties")
-//    public List<Property> getAllProperties(){
-//        return propertyRepository.findAll();
-//    }
+    @GetMapping("/")
+    public List<Property> getAllProperties(){
+        return propertyRepository.findAll();
+    }
 }
