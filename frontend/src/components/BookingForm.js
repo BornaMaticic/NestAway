@@ -11,7 +11,7 @@ class BookingForm extends Component {
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
     this.handleCustomerSelect = this.handleCustomerSelect.bind(this);
     this.handlePropertySelect = this.handlePropertySelect.bind(this);
-    this.handleBooking = this.handleBooking.bind(this);
+    // this.handleBooking = this.handleBooking.bind(this);
     this.handleBookingPost = this.handleBookingPost.bind(this)
   }
 
@@ -36,21 +36,23 @@ class BookingForm extends Component {
   }
 
 
-  handleBooking(){
-    console.log(this.props);
-    this.props.handleBookingPost();
-  }
+  // handleBooking(){
+  //   console.log(this.props);
+  //   this.props.handleBookingPost();
+  // }
 
   handleBookingPost(event){
     event.preventDefault();
-    console.log(this.props.selectedCustomer);
-    console.log(this.props.selectedProperty);
-    console.log(this.bookingInfo);
+    console.log(this.props);
+
 
     const confirmedBooking = {
       "customer": `http://localhost:8080/api/customers/${this.props.selectedCustomer}`,
       "property": `http://localhost:8080/api/properties/${this.props.selectedProperty}`,
-      "totalPrice": 50
+      "totalPrice": 50,
+      "startDate": `${this.props.bookingCriteria.startDate}`,
+      "endDate": `${this.props.bookingCriteria.endDate}`
+
     }
     const request = new Request();
     request.post('/api/bookings', confirmedBooking).then(() => {

@@ -22,18 +22,19 @@ class SiteContainer extends Component{
       filteredProperties: [],
       customers: [],
       selectedCustomer: null,
-      selectedProperty: null
+      selectedProperty: null,
+      selectedStartDate: null,
+      selectedEndDate: null
 
     }
-    // this.selectedCustomer = null;
+
     this.criteria = null;
-    // this.selectedProperty = null;
     this.bookingInfo = null;
 
     this.handleBookingCriteriaSubmit = this.handleBookingCriteriaSubmit.bind(this);
     this.setSelectedCustomer = this.setSelectedCustomer.bind(this);
     this.setSelectedProperty = this.setSelectedProperty.bind(this);
-    this.handleBookingPost = this.handleBookingPost.bind(this);
+    // this.handleBookingPost = this.handleBookingPost.bind(this);
   }
 
   componentDidMount(){
@@ -65,11 +66,7 @@ class SiteContainer extends Component{
     request.get(`/api/properties/findproperties/${this.criteria.startDate}/${this.criteria.endDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
       this.setState({filteredProperties: filteredPropertiesData});
     })
-    // let selectedProperties = this.state.properties;
-    // selectedProperties = selectedProperties.filter(property =>
-    //   property.capacity >= this.criteria.capacity);
-    //   this.setState({filteredProperties: selectedProperties});
-    }
+  }
 
 
 
@@ -87,6 +84,19 @@ class SiteContainer extends Component{
     })
   }
 
+  // handleBookingPost(){
+  //   const confirmedBooking = {
+  //     "customer_id": this.state.selectedCustomer,
+  //     "property_id": this.state.selectedProperty,
+  //     "startDate": this.state.selectedStartDate,
+  //
+  //   }
+  //   const request = new Request();
+  //   request.post('/api/bookings', confirmedBooking).then(() => {
+  //     window.location = '/bookings'
+  //   })
+  // }
+
   setSelectedCustomer(index){
     console.log(index);
     let newSelectedCustomer = this.state.customers[index].id
@@ -103,22 +113,6 @@ class SiteContainer extends Component{
     // console.log(this.selectedProperty);
   }
 
-  handleBookingPost(){
-    console.log(this.selectedCustomer);
-    console.log(this.selectedProperty);
-    console.log(this.bookingInfo);
-
-    const confirmedBooking = {
-      "customer_id": this.state.selectedCustomer,
-      "property_id": this.state.selectedProperty
-      // TODO add the remaining booking criteria - ie dates
-    }
-    const request = new Request();
-    request.post('/api/bookings', confirmedBooking).then(() => {
-      window.location = '/bookings'
-    })
-  }
-
   render(){
     return (
       <Router>
@@ -133,9 +127,10 @@ class SiteContainer extends Component{
           existingCustomers={this.state.customers}
           setSelectedCustomer={this.setSelectedCustomer}
           setSelectedProperty={this.setSelectedProperty}
-          handleBookingPost={this.handleBookingPost}
+          // handleBookingPost={this.handleBookingPost}
           selectedCustomer={this.state.selectedCustomer}
           selectedProperty={this.state.selectedProperty}
+          bookingCriteria={this.criteria}
         />
       }
       />
