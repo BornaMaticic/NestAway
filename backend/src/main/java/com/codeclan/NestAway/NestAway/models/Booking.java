@@ -25,11 +25,11 @@ public class Booking implements Serializable {
     private Date endDate;
 
     @ManyToOne
-    @JoinColumn(name="customer_id", nullable = false)
+    @JoinColumn(name="customer_id")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name="property_id", nullable = false)
+    @JoinColumn(name="property_id")
     private Property property;
 
     public Booking(double totalPrice, Customer customer, Property property, Date startDate, Date endDate) {
@@ -66,6 +66,10 @@ public class Booking implements Serializable {
         this.endDate = endDate;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b64f97a7bcd5e30fa5c7268ab16c9f4cc95883b4
     public void setId(Long id) {
         this.id = id;
     }
