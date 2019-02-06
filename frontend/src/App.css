@@ -28,14 +28,19 @@ h1.website-header{
 }
 
 .booking-form-container{
-  display: flex;
+   display: flex;
+   align-items: center;
+   justify-content: center;
   flex-direction: column;
+  /* text-align: center; */
 }
 
 form{
+  /* display: inline-block; */
   margin: 20px;
   padding: 10px;
   display: flex;
+  min-width: 40vw;
   max-width: 60vw;
   flex-direction:column;
   border-radius: 5px;
