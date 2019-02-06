@@ -21,12 +21,12 @@ class SiteContainer extends Component{
       properties: [],
       filteredProperties: [],
       customers: [],
-      bookings: []
+      bookings: [],
       selectedCustomer: null,
       selectedProperty: null,
       selectedStartDate: null,
       selectedEndDate: null
-
+    }
 
     this.criteria = null;
     this.bookingInfo = null;
