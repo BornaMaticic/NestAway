@@ -3,7 +3,9 @@ import Customer from './Customer.js';
 
 
 const CustomersList = (props) => {
-  console.log(props);
+
+
+  render() {}
   const customers = props.customers.map(customer => {
     return (
 
@@ -17,7 +19,7 @@ const CustomersList = (props) => {
     <ul>
       {customers}
     </ul>
-  )
+
 
 }
 
