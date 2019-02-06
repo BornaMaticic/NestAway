@@ -105,9 +105,6 @@ class BookingForm extends Component {
     )
   }
 
-
-
-
 }
 
 export default BookingForm;
