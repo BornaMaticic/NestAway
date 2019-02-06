@@ -66,10 +66,7 @@ public class Booking implements Serializable {
         this.endDate = endDate;
     }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b64f97a7bcd5e30fa5c7268ab16c9f4cc95883b4
     public void setId(Long id) {
         this.id = id;
     }
