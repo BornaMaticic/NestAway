@@ -16,7 +16,8 @@ class FilteredPropertiesList extends Component{
     this.props.handlePropertySelect(index)
   }
 
-  handleBookingConfirmationClick(){
+  handleBookingConfirmationClick(event){
+    event.preventDefault();
     this.props.handleBookingClick();
   }
 
@@ -35,10 +36,12 @@ class FilteredPropertiesList extends Component{
 
     return (
       <Fragment>
-        <Grid container spacing={16} style={{padding:16}}>
-          {properties}
-        </Grid>
-        <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
+        <form>
+          <Grid container spacing={16} style={{padding:16}}>
+            {properties}
+          </Grid>
+          <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
+        </form>
       </Fragment>
     )
 

@@ -79,14 +79,18 @@ class SiteContainer extends Component{
   }
 
   handleBookingPost(){
+    console.log(this.selectedCustomer);
+    console.log(this.selectedProperty);
+    console.log(this.bookingInfo);
+  
     const confirmedBooking = {
       "customer_id": this.selectedCustomer,
       "property_id": this.selectedProperty
       // TODO add the remaining booking criteria - ie dates
     }
     const request = new Request();
-    request.post('/api/bookings', confirmedBooking).then(() => {
-      window.location = '/bookings'
+    request.post('/api/booking', confirmedBooking).then(() => {
+      window.location = '/booking'
     })
   }
 
@@ -136,7 +140,7 @@ class SiteContainer extends Component{
       }
       />
 
-      <Route path="/bookings" component={Bookings} />
+      <Route path="/booking" component={Bookings} />
 
       </Fragment>
       </Router>

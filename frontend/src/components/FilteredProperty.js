@@ -8,12 +8,18 @@ import Button from '@material-ui/core/Button';
 
 const FilteredProperty = (props) => {
 
+  function onSelect(event){
+    event.preventDefault();
+    props.sendSelectedProperty(props.property.id)
+    console.log(props.property.id);
+  }
+
   return (
     <div className="property">
         <Card>
           <CardMedia
             style={{height:0, paddingTop:'56.25%'}}
-            image={props.property.image_url}
+            image={props.property.imageUrl}
             title={props.property.address}
           />
           <CardContent>
@@ -23,11 +29,17 @@ const FilteredProperty = (props) => {
             <Typography component="p">
               {props.property.rating}
             </Typography>
+            <Typography component="p">
+              {props.property.id}
+            </Typography>
           </CardContent>
+
+
           <CardActions>
             <Button
             type="submit"
-            value={props.propertyId}
+            value={props.property.id}
+            onClick={onSelect}
             // TODO check this is the correct reference for property ID
             size="small"
             color="primary">

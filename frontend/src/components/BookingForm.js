@@ -33,6 +33,7 @@ class BookingForm extends Component {
 
 
   handleBooking(){
+    console.log(this.props);
     this.props.handleBookingPost();
   }
 
