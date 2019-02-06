@@ -49,7 +49,6 @@ public class DataLoader implements ApplicationRunner {
             e.printStackTrace();
         }
 
-
         String startDate2 = "29-07-2018";
         Date startingDate2 = null;
         try {
