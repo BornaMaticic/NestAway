@@ -12,8 +12,8 @@ class FilteredPropertiesList extends Component{
   }
 
 
-  sendSelectedProperty(index){
-    this.props.handlePropertySelect(index)
+  sendSelectedProperty(propertyId){
+    this.props.handlePropertySelect(propertyId)
   }
 
   handleBookingConfirmationClick(event){
@@ -36,12 +36,9 @@ class FilteredPropertiesList extends Component{
 
     return (
       <Fragment>
-        <form>
           <Grid container spacing={16} style={{padding:16}}>
             {properties}
           </Grid>
-          <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
-        </form>
       </Fragment>
     )
 

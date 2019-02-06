@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import Request from '../helpers/Request.js'
 import FilteredPropertiesList from '../components/FilteredPropertiesList.js';
 import CustomerSelector from './CustomerSelector.js';
+
 
 
 class BookingForm extends Component {
@@ -27,14 +29,30 @@ class BookingForm extends Component {
     this.props.setSelectedCustomer(index);
   }
 
-  handlePropertySelect(index){
-    this.props.setSelectedProperty(index);
+  handlePropertySelect(propertyId){
+    this.props.setSelectedProperty(propertyId);
   }
 
 
   handleBooking(){
     console.log(this.props);
     this.props.handleBookingPost();
+  }
+
+  handleBookingPost(){
+    console.log(this.selectedCustomer);
+    console.log(this.selectedProperty);
+    console.log(this.bookingInfo);
+
+    const confirmedBooking = {
+      "customer_id": this.props.selectedCustomer,
+      "property_id": this.props.selectedProperty
+      // TODO add the remaining booking criteria - ie dates
+    }
+    const request = new Request();
+    request.post('/api/bookings', confirmedBooking).then(() => {
+      window.location = '/bookings'
+    })
   }
 
 
@@ -58,6 +76,10 @@ class BookingForm extends Component {
         handlePropertySelect={this.handlePropertySelect}
         handleBookingClick={this.handleBooking}
       />
+
+      <form onSubmit={this.handleBookingPost}>
+        <button type="submit">Confirm booking</button>
+      </form>
 
       </Fragment>
     )
