@@ -11,6 +11,15 @@ body{
   justify-content: center;
 }
 
+form{
+  padding-top: 50px;
+  padding-left: 50px;
+  display: flex;
+  max-width: 30vw;
+  flex-direction:column;
+}
+
+
 /*ul {
   list-style-type: none;
   margin: 0;

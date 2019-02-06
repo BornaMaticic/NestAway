@@ -22,6 +22,7 @@ class FilteredPropertiesList extends Component{
   }
 
   render(){
+    console.log(this.props.filteredProperties);
     const properties = this.props.filteredProperties.map(property => {
       return (
         <Grid item xs={16} sm={6} lg={4} xl={3}>

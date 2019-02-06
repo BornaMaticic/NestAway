@@ -48,14 +48,30 @@ class SiteContainer extends Component{
 
   }
 
-
   handleBookingCriteriaSubmit(criteria){
     this.criteria = criteria;
-    let selectedProperties = this.state.properties;
-    selectedProperties = selectedProperties.filter(property =>
-      property.capacity >= this.criteria.capacity);
-      this.setState({filteredProperties: selectedProperties});
+
+    const startDateArray = criteria.startDate.split("-");
+    const reformattedStartDate = startDateArray[2] + startDateArray[1] + startDateArray[0];
+    this.criteria.startDate = reformattedStartDate;
+
+    const endDateArray = criteria.endDate.split("-");
+    const reformattedEndDate = endDateArray[2] + endDateArray[1] + endDateArray[0];
+    this.criteria.endDate = reformattedEndDate;
+
+    console.log(criteria);
+
+    const request = new Request();
+    request.get(`/api/properties/findproperties/${this.criteria.startDate}/${this.criteria.endDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
+      this.setState({filteredProperties: filteredPropertiesData});
+    })
+    // let selectedProperties = this.state.properties;
+    // selectedProperties = selectedProperties.filter(property =>
+    //   property.capacity >= this.criteria.capacity);
+    //   this.setState({filteredProperties: selectedProperties});
     }
+
+
 
   handleCustomerPost(customerInfo){
     const request = new Request();

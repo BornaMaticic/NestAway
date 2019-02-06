@@ -18,9 +18,10 @@ class BookingForm extends Component {
   handleCriteriaSubmit(event){
     event.preventDefault()
     const criteria = {
+      "startDate": event.target.startDate.value,
+      "endDate": event.target.endDate.value,
       "capacity": event.target.capacity.value,
-      "minPricePerNight": event.target.minPricePerNight,
-      "maxPricePerNight": event.target.maxPricePerNight
+      "maxPricePerNight": event.target.maxPricePerNight.value
     }
     this.props.onCriteriaSubmit(criteria);
     console.log(criteria);
@@ -50,7 +51,6 @@ class BookingForm extends Component {
       "customer": `http://localhost:8080/api/customers/${this.props.selectedCustomer}`,
       "property": `http://localhost:8080/api/properties/${this.props.selectedProperty}`,
       "totalPrice": 50
-      // TODO add the remaining booking criteria - ie dates
     }
     const request = new Request();
     request.post('/api/bookings', confirmedBooking).then(() => {
@@ -67,8 +67,9 @@ class BookingForm extends Component {
           customers={this.props.existingCustomers}
           handleCustomerSelect={this.handleCustomerSelect}
         />
+        <input type="date" placeholder="Check-in" name="startDate" required/>
+        <input type="date" placeholder="Check-out" name="endDate" required/>
         <input type="text" placeholder="Capacity" name="capacity" required/>
-        <input type="number" placeholder="Min price per night" name="minPricePerNight" required/>
         <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
 
         <button type="submit">Display available nests</button>
