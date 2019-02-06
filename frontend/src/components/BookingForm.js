@@ -40,14 +40,16 @@ class BookingForm extends Component {
     this.props.handleBookingPost();
   }
 
-  handleBookingPost(){
+  handleBookingPost(event){
+    event.preventDefault();
     console.log(this.props.selectedCustomer);
     console.log(this.props.selectedProperty);
     console.log(this.bookingInfo);
 
     const confirmedBooking = {
-      "customer_id": this.props.selectedCustomer,
-      "property_id": this.props.selectedProperty
+      "customer": `http://localhost:8080/api/customers/${this.props.selectedCustomer}`,
+      "property": `http://localhost:8080/api/properties/${this.props.selectedProperty}`,
+      "totalPrice": 50
       // TODO add the remaining booking criteria - ie dates
     }
     const request = new Request();
