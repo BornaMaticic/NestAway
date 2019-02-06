@@ -12,6 +12,7 @@ class BookingForm extends Component {
     this.handleCustomerSelect = this.handleCustomerSelect.bind(this);
     this.handlePropertySelect = this.handlePropertySelect.bind(this);
     this.handleBooking = this.handleBooking.bind(this);
+    this.handleBookingPost = this.handleBookingPost.bind(this)
   }
 
   handleCriteriaSubmit(event){
@@ -40,8 +41,8 @@ class BookingForm extends Component {
   }
 
   handleBookingPost(){
-    console.log(this.selectedCustomer);
-    console.log(this.selectedProperty);
+    console.log(this.props.selectedCustomer);
+    console.log(this.props.selectedProperty);
     console.log(this.bookingInfo);
 
     const confirmedBooking = {

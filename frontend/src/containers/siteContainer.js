@@ -73,8 +73,7 @@ class SiteContainer extends Component{
 
   setSelectedCustomer(index){
     console.log(index);
-    let newSelectedCustomer = this.state.selectedCustomer;
-    newSelectedCustomer = this.state.customers[index].id
+    let newSelectedCustomer = this.state.customers[index].id
     this.setState({selectedCustomer: newSelectedCustomer});
     // this.selectedCustomer = index;
     // console.log(this.selectedCustomer);
@@ -82,8 +81,7 @@ class SiteContainer extends Component{
 
   setSelectedProperty(propertyId){
     console.log(propertyId);
-    let newSelectedProperty = this.state.selectedProperty;
-    newSelectedProperty = propertyId
+    let newSelectedProperty = propertyId
     this.setState({selectedProperty: newSelectedProperty})
     // this.selectedProperty = index;
     // console.log(this.selectedProperty);
