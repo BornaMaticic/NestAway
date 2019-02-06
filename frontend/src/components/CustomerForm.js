@@ -23,7 +23,7 @@ class CustomerForm extends Component {
 
   render(){
     return(
-      <div className="booking-form-container">
+      <div className="form-container">
 
       <form onSubmit={this.prepareCustomerToPost}>
 
@@ -32,8 +32,8 @@ class CustomerForm extends Component {
 
         <label for="lastName">Last Name</label>
         <input type="text" placeholder="Last Name" name="lastName"/>
-        
-        <button id="customer-form-submit" type="submit">Save Customer</button>
+
+        <button className="form-submit" type="submit">Save Customer</button>
       </form>
 
       </div>

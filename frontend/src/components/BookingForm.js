@@ -65,7 +65,7 @@ class BookingForm extends Component {
   render() {
     return (
 
-      <div className="booking-form-container">
+      <div className="form-container">
 
       <form onSubmit={this.handleCriteriaSubmit}>
 

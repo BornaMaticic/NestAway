@@ -27,7 +27,7 @@ h1.website-header{
   width: 10vw;
 }
 
-.booking-form-container{
+.form-container{
    display: flex;
    align-items: center;
    justify-content: center;
@@ -136,7 +136,7 @@ li a:hover:not(.active) {
   background-color: #acacac;
 }
 
-#customer-form-submit{
+.form-submit{
   outline: none;
   border-radius: 5px;
   cursor: pointer;
@@ -145,7 +145,7 @@ li a:hover:not(.active) {
   height: 5vw;
 }
 
-#customer-form-submit:hover{
+.form-submit:hover{
   background-color: #acacac;
 }
 

@@ -29,12 +29,13 @@ class NavBar extends Component {
         </li>
 
         <li>
+          <Link to="/propertyform">New Nest</Link>
+        </li>
+        
+        <li>
           <Link to="/properties">Nests</Link>
         </li>
 
-        <li>
-          <Link to="/propertyform">New Nest</Link>
-        </li>
 
       </ul>
       </>
