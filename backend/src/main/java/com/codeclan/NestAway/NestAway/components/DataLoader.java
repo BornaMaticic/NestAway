@@ -72,12 +72,15 @@ public class DataLoader implements ApplicationRunner {
         customerRepository.save(customer2);
 
 
-        Property property1 = new Property("Cottage", "12 Baker Street", 5, 150, RatingType.THREE, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
-        Property property2 = new Property("Apartment", "30a Barn Terrace", 2, 90, RatingType.FOUR, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
-        Property property3 = new Property("House", "50a Barn Terrace", 4, 80, RatingType.FOUR, "https://images.adsttc.com/media/images/59a4/c624/b22e/389d/3e00/02a3/newsletter/MHA.JR_201708_038.jpg?1503970808");
+        Property property1 = new Property("Coconut Cottage", "12 Grand Cayman Lane, Grand Cayman", 6, 150, RatingType.THREE, "https://s3.amazonaws.com/vrp2/vrpimages/5/2316/384/5ac78c50da99e_CB-WEB-FrontofHouse.jpg");
+        Property property2 = new Property("Aspen Glow", "415 East Hyman Avenue, Aspen", 4, 90, RatingType.FOUR, "http://aspen.realpropertyluxurygroup.com/wp-content/uploads/sites/30/2014/01/Eagle-Pines.jpg");
+        Property property3 = new Property("Lake Daze", "17750 Caldera Springs Drive, Oregon", 5, 120, RatingType.FIVE, "https://www.calderasprings.com/assets/images/masthead/lake-house.jpg");
+        Property property4 = new Property("Casa Del Sol", "29649 Mijas Costa, Málaga, Spain", 8, 180, RatingType.FIVE, "https://www.bluevillascollection.com/media/k2/items/cache/e208d5104268085aecc7ece94f6f710e_XL.jpg");
+
         propertyRepository.save(property1);
         propertyRepository.save(property2);
         propertyRepository.save(property3);
+        propertyRepository.save(property4);
 
         Booking booking1 = new Booking(300, customer1, property1,startingDate, endingDate);
         Booking booking2= new Booking(270, customer2, property2, startingDate2, endingDate);
