@@ -17,7 +17,7 @@ class NavBar extends Component {
         </li>
 
         <li>
-          <Link to="/bookings">Upcoming Bookings</Link>
+          <Link to="/booking">Upcoming Bookings</Link>
         </li>
 
         <li>

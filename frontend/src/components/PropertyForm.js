@@ -8,7 +8,7 @@ const PropertyForm = (props) => {
     const property = {
       "address": event.target.address.value,
       "capacity": event.target.capacity.value,
-      "image_url": event.target.image_url.value,
+      "imageUrl": event.target.image_url.value,
       "name": event.target.name.value,
       "price": event.target.price.value,
       "rating": event.target.rating.value
