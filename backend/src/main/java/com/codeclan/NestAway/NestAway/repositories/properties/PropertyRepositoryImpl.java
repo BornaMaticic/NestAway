@@ -119,7 +119,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
             }
         }
          for (Property property1 : freeOnDates) {
-            if (property1.getCapacity() < capacity) {
+            if (property1.getCapacity() <= capacity) {
                 canBook.remove(property1);
             }
         }
