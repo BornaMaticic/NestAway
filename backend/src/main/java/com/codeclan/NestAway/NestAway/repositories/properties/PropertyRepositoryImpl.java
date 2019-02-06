@@ -21,29 +21,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     EntityManager entityManager;
 
 
-
-    @Transactional
-    public List<Property> findAllPropertiesByDate(Date startDate, Date endDate){
-        List<Property> properties = null;
-        Session session = entityManager.unwrap(Session.class);
-
-        try {
-            Criteria cr = session.createCriteria(Property.class);
-            cr.createAlias("bookings", "bookingAlias");
-            cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
-            cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
-
-
-            properties = cr.list();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return properties;
-    }
-
-
     @Transactional
     public List<Property> findAllPropertiesByCapacityAndPrice(int capacity, double price){
         List<Property> results = null;
@@ -64,8 +41,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         }
         return results;
     }
-
-
 
     @Transactional
     public List<Property> getAllBookedPropertiesByDate(Date startDate, Date endDate){
@@ -133,8 +108,6 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     }
 
 
-
-
     @Transactional
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
         List<Property> freeOnDates = findAvailablePropertiesByDate(startDate, endDate);
@@ -145,14 +118,11 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
                 canBook.add(property);
             }
         }
-      
-         for (Property property1 : canBook) {
+         for (Property property1 : freeOnDates) {
             if (property1.getCapacity() < capacity) {
                 canBook.remove(property1);
             }
-
         }
-
         return canBook;
     }
 

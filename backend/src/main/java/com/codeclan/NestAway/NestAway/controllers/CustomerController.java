@@ -20,9 +20,6 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
-//    @GetMapping("/customers")
-//    public List<Customer> getAllCustomers(){
-//        return customerRepository.findAll();
-//    }
+
 
 }
