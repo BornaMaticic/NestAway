@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
 import PropertyForm from '../components/PropertyForm.js';
-import Bookings from '../components/Bookings.js';
+import Booking from '../components/Booking.js';
 import CustomerForm from '../components/CustomerForm.js';
 import CustomersList from '../components/CustomersList.js';
 import BookingsList from '../components/BookingsList.js';
