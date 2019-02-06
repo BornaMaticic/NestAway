@@ -1,10 +1,17 @@
-/* body{
+*{
+  padding: 30;
   margin: 0;
-  padding: 0;
+  box-sizing: border-box;
   justify-content: center;
 }
 
-ul {
+body{
+  margin: 0;
+  padding: 40;
+  justify-content: center;
+}
+
+/*ul {
   list-style-type: none;
   margin: 0;
   padding: 0;

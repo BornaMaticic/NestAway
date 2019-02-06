@@ -8,7 +8,7 @@ class PropertiesList extends Component {
   render(){
     const properties = this.props.properties.map(currentProperty => {
       return (
-        <Grid item xs={12} sm={6} lg={4} xl={3}>
+        <Grid item xs={16} sm={6} lg={4} xl={3}>
           <Property property={currentProperty} />
         </Grid>
         )

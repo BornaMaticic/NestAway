@@ -14,7 +14,7 @@ const Property = (props) => {
         <Card>
           <CardMedia
             style={{height:0, paddingTop:'56.25%'}}
-            image={props.property.image_url}
+            image={props.property.imageUrl}
             title={props.property.address}
           />
           <CardContent>
