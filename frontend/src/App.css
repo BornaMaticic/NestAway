@@ -107,18 +107,47 @@ li a:hover:not(.active) {
 
 }
 
-#booking-form-filter{
+#booking-form-filter-button{
   outline: none;
   /* box-shadow: 0.1px 0.1px 4px 0.1px; */
   border-radius: 5px;
   cursor: pointer;
-
+  /* max-width: 20vw; */
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: 5vw;
 }
 
-#booking-form-filter:hover{
+#booking-form-filter-button:hover{
   background-color: #acacac;
 }
 
+#booking-form-submit{
+  /* visibility: hidden; */
+  min-width: 20vw;
+}
+
+#booking-form-submit-button{
+  height: 5vh;
+  /* width: 10vw; */
+}
+
+#booking-form-submit-button:hover{
+  background-color: #acacac;
+}
+
+#customer-form-submit{
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: 5vw;
+}
+
+#customer-form-submit:hover{
+  background-color: #acacac;
+}
 
 
 

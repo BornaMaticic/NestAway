@@ -25,6 +25,7 @@ class BookingForm extends Component {
     }
     this.props.onCriteriaSubmit(criteria);
     console.log(criteria);
+    document.getElementById('booking-form-submit').style.visibility = 'visible';
   }
 
   handleCustomerSelect(index){
@@ -66,8 +67,6 @@ class BookingForm extends Component {
 
       <div className="booking-form-container">
 
-      <div className="margin"/>
-
       <form onSubmit={this.handleCriteriaSubmit}>
 
         <CustomerSelector
@@ -86,7 +85,7 @@ class BookingForm extends Component {
         <label for="maxPricePerNight">Maximum Price Per Night</label>
         <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
 
-        <button id="booking-form-filter" type="submit">Display available nests</button>
+        <button id="booking-form-filter-button" type="submit">Display available nests</button>
       </form>
 
       <div className="margin"/>
@@ -98,8 +97,8 @@ class BookingForm extends Component {
         handleBookingClick={this.handleBooking}
       />
 
-      <form onSubmit={this.handleBookingPost}>
-        <button type="submit">Confirm booking</button>
+      <form id="booking-form-submit" onSubmit={this.handleBookingPost}>
+        <button id="booking-form-submit-button" type="submit">Confirm booking</button>
       </form>
 
       </div>

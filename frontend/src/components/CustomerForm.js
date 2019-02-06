@@ -23,11 +23,20 @@ class CustomerForm extends Component {
 
   render(){
     return(
+      <div className="booking-form-container">
+
       <form onSubmit={this.prepareCustomerToPost}>
+
+        <label for="firstName">First Name</label>
         <input type="text" placeholder="First Name" name="firstName"/>
+
+        <label for="lastName">Last Name</label>
         <input type="text" placeholder="Last Name" name="lastName"/>
-        <button type="submit">Save Customer</button>
+        
+        <button id="customer-form-submit" type="submit">Save Customer</button>
       </form>
+
+      </div>
     )
   }
 
