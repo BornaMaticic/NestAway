@@ -16,16 +16,9 @@ public class PropertyController {
     PropertyRepository propertyRepository;
 
 
-    @GetMapping("/bookingdate/{date}")
-    public List<Property> findAllPropertiesByDate(@PathVariable @DateTimeFormat(pattern="dd-MM-yyyy") Date startDate, Date endDate){
-        return propertyRepository.findAllPropertiesByDate(startDate, endDate);
-    }
-
-    @GetMapping("/findavailableproperties/{startDate}/{endDate}")
-    public List<Property> findAvailablePropertiesByDate
-            (@PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date startDate,
-             @PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date endDate){
-        return propertyRepository.findAvailablePropertiesByDate(startDate, endDate);
+    @GetMapping("/findproperties/{capacity}/{price}")
+    public List<Property> findAllPropertiesByCapacityAndPrice (@PathVariable int capacity, @PathVariable double price){
+        return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
     }
 
 
@@ -36,15 +29,15 @@ public class PropertyController {
         return propertyRepository.getAllBookedPropertiesByDate(startDate, endDate);
     }
 
-    @GetMapping("/")
-    public List<Property> getAllProperties(){
-        return propertyRepository.findAll();
+
+
+    @GetMapping("/findavailableproperties/{startDate}/{endDate}")
+    public List<Property> findAvailablePropertiesByDate
+            (@PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date startDate,
+             @PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date endDate){
+        return propertyRepository.findAvailablePropertiesByDate(startDate, endDate);
     }
 
-    @GetMapping("/findproperties/{capacity}/{price}")
-    public List<Property> findAllPropertiesByCapacityAndPrice (@PathVariable int capacity, @PathVariable double price){
-        return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
-    }
 
     @GetMapping("/findproperties/{startDate}/{endDate}/{capacity}/{price}")
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice

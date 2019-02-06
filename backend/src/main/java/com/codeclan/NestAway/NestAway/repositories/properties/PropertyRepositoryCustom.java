@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface PropertyRepositoryCustom {
 
-//    List<Property> getAllProperties();
+
     List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate);
-    List<Property>findAllPropertiesByDate(Date startDate, Date endDate);
 
     List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price);
 
