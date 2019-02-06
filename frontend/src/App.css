@@ -11,21 +11,64 @@ body{
   justify-content: center;
 }
 
-form{
-  padding-top: 50px;
-  padding-left: 50px;
+h1.website-header{
+  color: #585a5e;
+  padding-left: 10px;
+}
+
+.router-container{
   display: flex;
-  max-width: 30vw;
-  flex-direction:column;
+  flex-direction: row;
 }
 
 
-/*ul {
+.margin{
+  display: flex;
+  width: 10vw;
+}
+
+.booking-form-container{
+  display: flex;
+  flex-direction: column;
+}
+
+form{
+  margin: 20px;
+  padding: 10px;
+  display: flex;
+  max-width: 60vw;
+  flex-direction:column;
+  border-radius: 5px;
+  box-shadow: 0.2px 0.4px 5px 0.2px;
+}
+
+label{
+  border: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+input{
+
+  /* border: 10px; */
+  padding: 5px;
+  margin: 10px;
+  outline: none;
+  border-radius: 5px;
+}
+
+.homepage{
+  display: flex;
+  flex-direction: column;
+  color: blue;
+  justify-content: center;
+}
+ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #585a5e;
   color: white;
 }
 
@@ -49,7 +92,32 @@ li a:hover:not(.active) {
   background-color: #4CAF50;
 }
 
-form{
+#customer-selector{
+  outline: none;
+  /* box-shadow: 0.2px 0.4px 4px 0.2px; */
+  padding: 5px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 15px;
+
+}
+
+#booking-form-filter{
+  outline: none;
+  /* box-shadow: 0.1px 0.1px 4px 0.1px; */
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+#booking-form-filter:hover{
+  background-color: #acacac;
+}
+
+
+
+
+/*form{
   padding-top: 50px;
   padding-left: 50px;
   display: flex;

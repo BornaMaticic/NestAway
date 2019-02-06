@@ -121,7 +121,7 @@ class SiteContainer extends Component{
     return (
       <Router>
       <Fragment>
-      <h1>NestAway</h1>
+      <h1 className="website-header">NestAway</h1>
       <NavBar/>
       <Route exact path="/" component={Home} />
 
@@ -169,8 +169,11 @@ class SiteContainer extends Component{
       <Route path="/bookings" render={() => <BookingsList bookings={this.state.bookings} />
       }
       />
+
       </Fragment>
       </Router>
+
+
     )
   }
 

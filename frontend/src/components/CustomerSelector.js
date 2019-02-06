@@ -11,10 +11,13 @@ const CustomerSelector = (props) => {
   }
 
   return(
+    <>
+    <label for="customer-selector">Select Existing Customer</label>
     <select id="customer-selector" defaultValue="default" onChange={handleChange}>
       <option disabled value="default">Select customer</option>
       { options }
     </select>
+    </>
   )
 
 }
