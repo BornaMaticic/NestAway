@@ -149,6 +149,9 @@ li a:hover:not(.active) {
   background-color: #acacac;
 }
 
+#logo-heading-container{
+  display: inline-flex;
+}
 
 
 /*form{

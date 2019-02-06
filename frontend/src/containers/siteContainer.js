@@ -121,7 +121,14 @@ class SiteContainer extends Component{
     return (
       <Router>
       <Fragment>
-      <h1 className="website-header">NestAway</h1>
+        <div id="logo-heading-container">
+          <div>
+          <img src="NestAwayLogo.jpeg" height="30"/>
+          </div>
+          <div>
+          <h1 className="website-header">NestAway</h1>
+          </div>
+        </div>
       <NavBar/>
       <Route exact path="/" component={Home} />
 
