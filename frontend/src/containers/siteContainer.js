@@ -10,7 +10,7 @@ import PropertyForm from '../components/PropertyForm.js';
 import Bookings from '../components/Bookings.js';
 import CustomerForm from '../components/CustomerForm.js';
 import CustomersList from '../components/CustomersList.js';
-
+import BookingsList from '../components/BookingsList.js';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class SiteContainer extends Component{
@@ -20,8 +20,8 @@ class SiteContainer extends Component{
     this.state = {
       properties: [],
       filteredProperties: [],
-      customers: []
-
+      customers: [],
+      bookings: []
     }
     this.selectedCustomer = null;
     this.criteria = null;
@@ -41,7 +41,11 @@ class SiteContainer extends Component{
     request.get('/api/customers').then((customersData) => {
       this.setState({customers: customersData._embedded.customers})
       console.log(this.state.customers);
-    })
+    });
+    request.get('/api/bookings').then((bookingData) => {
+     this.setState({bookings: bookingData._embedded.bookings})
+     console.log(this.state.bookings);
+   });
 
   }
 
@@ -94,8 +98,8 @@ class SiteContainer extends Component{
     return (
       <Router>
       <Fragment>
+      <h1>NestAway</h1>
       <NavBar/>
-
       <Route exact path="/" component={Home} />
 
       <Route path="/bookingform"
@@ -136,8 +140,9 @@ class SiteContainer extends Component{
       }
       />
 
-      <Route path="/bookings" component={Bookings} />
-
+      <Route path="/bookings" render={() => <BookingsList bookings={this.state.bookings} />
+      }
+      />
       </Fragment>
       </Router>
     )
