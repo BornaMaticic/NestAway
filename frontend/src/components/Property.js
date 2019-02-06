@@ -22,7 +22,7 @@ const Property = (props) => {
               {props.property.address}
             </Typography>
             <Typography component="p">
-              {props.property.rating}
+              {props.property.rating} Star Rating
             </Typography>
           </CardContent>
           <CardActions>
