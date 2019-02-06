@@ -36,6 +36,7 @@ public class PropertyController {
         return propertyRepository.getAllBookedPropertiesByDate(startDate, endDate);
     }
 
+
     @GetMapping("/")
     public List<Property> getAllProperties(){
         return propertyRepository.findAll();
@@ -45,6 +46,7 @@ public class PropertyController {
     public List<Property> findAllPropertiesByCapacityAndPrice (@PathVariable int capacity, @PathVariable double price){
         return propertyRepository.findAllPropertiesByCapacityAndPrice(capacity, price);
     }
+
 
     @GetMapping("/findproperties/{startDate}/{endDate}/{capacity}/{price}")
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
+
 class NavBar extends Component {
   render(){
     return(
@@ -27,9 +28,12 @@ class NavBar extends Component {
           <Link to="/customers">Customers</Link>
         </li>
 
-
         <li>
           <Link to="/properties">Nests</Link>
+        </li>
+
+        <li>
+          <Link to="/propertyform">New Nest</Link>
         </li>
 
       </ul>

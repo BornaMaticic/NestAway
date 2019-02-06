@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const CustomerSelector = (props) => {
   const options = props.customers.map((customer, index) => {
     return <option value={index} key={index}>{customer.firstName} {customer.lastName}</option>

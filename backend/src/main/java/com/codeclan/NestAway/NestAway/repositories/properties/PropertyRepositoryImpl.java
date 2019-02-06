@@ -30,9 +30,9 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         try {
             Criteria cr = session.createCriteria(Property.class);
             cr.createAlias("bookings", "bookingAlias");
-
             cr.add(Restrictions.between("bookingAlias.startDate", startDate, endDate));
             cr.add(Restrictions.between("bookingAlias.endDate", startDate, endDate));
+
 
             properties = cr.list();
         } catch (HibernateException e) {
@@ -99,6 +99,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         return  properties;
     }
 
+
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
         List<Property> results = null;
@@ -133,6 +134,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
 
 
+
     @Transactional
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
         List<Property> freeOnDates = findAvailablePropertiesByDate(startDate, endDate);
@@ -153,4 +155,5 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
 
         return canBook;
     }
+
 }
