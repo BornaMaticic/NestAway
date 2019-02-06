@@ -20,6 +20,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
     @Autowired
     EntityManager entityManager;
 
+
     @Transactional
     public List<Property> findAllPropertiesByCapacityAndPrice(int capacity, double price){
         List<Property> results = null;
@@ -73,6 +74,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         return  properties;
     }
 
+
     @Transactional
     public List<Property> findAvailablePropertiesByDate(Date startDate, Date endDate){
         List<Property> results = null;
@@ -105,6 +107,7 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         return  results;
     }
 
+
     @Transactional
     public List<Property> findAllPropertiesByDateAndCapacityAndPrice(Date startDate, Date endDate, int capacity, double price){
         List<Property> freeOnDates = findAvailablePropertiesByDate(startDate, endDate);
@@ -122,4 +125,5 @@ public class PropertyRepositoryImpl implements PropertyRepositoryCustom {
         }
         return canBook;
     }
+
 }

@@ -30,7 +30,6 @@ public class PropertyController {
     }
 
 
-
     @GetMapping("/findavailableproperties/{startDate}/{endDate}")
     public List<Property> findAvailablePropertiesByDate
             (@PathVariable @DateTimeFormat(pattern="ddMMyyyy") Date startDate,

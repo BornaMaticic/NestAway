@@ -17,4 +17,5 @@ public interface PropertyRepositoryCustom {
     List<Property> getAllBookedPropertiesByDate(Date startDate, Date endDate);
 
 
+
 }
