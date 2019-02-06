@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import Request from '../helpers/Request.js'
 import FilteredPropertiesList from '../components/FilteredPropertiesList.js';
 import CustomerSelector from './CustomerSelector.js';
+
 
 
 class BookingForm extends Component {
@@ -9,15 +11,17 @@ class BookingForm extends Component {
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
     this.handleCustomerSelect = this.handleCustomerSelect.bind(this);
     this.handlePropertySelect = this.handlePropertySelect.bind(this);
-    this.handleBooking = this.handleBooking.bind(this);
+    // this.handleBooking = this.handleBooking.bind(this);
+    this.handleBookingPost = this.handleBookingPost.bind(this)
   }
 
   handleCriteriaSubmit(event){
     event.preventDefault()
     const criteria = {
+      "startDate": event.target.startDate.value,
+      "endDate": event.target.endDate.value,
       "capacity": event.target.capacity.value,
-      "minPricePerNight": event.target.minPricePerNight,
-      "maxPricePerNight": event.target.maxPricePerNight
+      "maxPricePerNight": event.target.maxPricePerNight.value
     }
     this.props.onCriteriaSubmit(criteria);
     console.log(criteria);
@@ -27,13 +31,33 @@ class BookingForm extends Component {
     this.props.setSelectedCustomer(index);
   }
 
-  handlePropertySelect(index){
-    this.props.setSelectedProperty(index);
+  handlePropertySelect(propertyId){
+    this.props.setSelectedProperty(propertyId);
   }
 
 
-  handleBooking(){
-    this.props.handleBookingPost();
+  // handleBooking(){
+  //   console.log(this.props);
+  //   this.props.handleBookingPost();
+  // }
+
+  handleBookingPost(event){
+    event.preventDefault();
+    console.log(this.props);
+
+
+    const confirmedBooking = {
+      "customer": `http://localhost:8080/api/customers/${this.props.selectedCustomer}`,
+      "property": `http://localhost:8080/api/properties/${this.props.selectedProperty}`,
+      "totalPrice": 50,
+      "startDate": `${this.props.bookingCriteria.startDate}`,
+      "endDate": `${this.props.bookingCriteria.endDate}`
+
+    }
+    const request = new Request();
+    request.post('/api/bookings', confirmedBooking).then(() => {
+      window.location = '/bookings'
+    })
   }
 
 
@@ -45,8 +69,9 @@ class BookingForm extends Component {
           customers={this.props.existingCustomers}
           handleCustomerSelect={this.handleCustomerSelect}
         />
+        <input type="date" placeholder="Check-in" name="startDate" required/>
+        <input type="date" placeholder="Check-out" name="endDate" required/>
         <input type="text" placeholder="Capacity" name="capacity" required/>
-        <input type="number" placeholder="Min price per night" name="minPricePerNight" required/>
         <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
 
         <button type="submit">Display available nests</button>
@@ -57,6 +82,10 @@ class BookingForm extends Component {
         handlePropertySelect={this.handlePropertySelect}
         handleBookingClick={this.handleBooking}
       />
+
+      <form onSubmit={this.handleBookingPost}>
+        <button type="submit">Confirm booking</button>
+      </form>
 
       </Fragment>
     )

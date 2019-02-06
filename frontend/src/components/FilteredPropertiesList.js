@@ -12,15 +12,17 @@ class FilteredPropertiesList extends Component{
   }
 
 
-  sendSelectedProperty(index){
-    this.props.handlePropertySelect(index)
+  sendSelectedProperty(propertyId){
+    this.props.handlePropertySelect(propertyId)
   }
 
-  handleBookingConfirmationClick(){
+  handleBookingConfirmationClick(event){
+    event.preventDefault();
     this.props.handleBookingClick();
   }
 
   render(){
+    console.log(this.props.filteredProperties);
     const properties = this.props.filteredProperties.map(property => {
       return (
         <Grid item xs={16} sm={6} lg={4} xl={3}>
@@ -35,10 +37,9 @@ class FilteredPropertiesList extends Component{
 
     return (
       <Fragment>
-        <Grid container spacing={16} style={{padding:16}}>
-          {properties}
-        </Grid>
-        <button type="submit" onClick={this.handleBookingConfirmationClick}>Confirm booking</button>
+          <Grid container spacing={16} style={{padding:16}}>
+            {properties}
+          </Grid>
       </Fragment>
     )
 
