@@ -16,6 +16,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Component
 
@@ -37,35 +38,23 @@ public class DataLoader implements ApplicationRunner {
 
     }
 
-    public void run(ApplicationArguments args) {
+    public void run(ApplicationArguments args) throws ParseException {
 
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        DateFormat checkIn = new SimpleDateFormat("dd-MM-yyyy");
-        String startDate = "24-07-2018";
-        Date startingDate = null;
-        try {
-            startingDate = checkIn.parse(startDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String stringToParse = "12-02-2019";
+        String stringToParse2 = "18-02-2019";
 
+        Date date = df.parse(stringToParse);
+        Date date2 = df.parse(stringToParse2);
 
-        String startDate2 = "29-07-2018";
-        Date startingDate2 = null;
-        try {
-            startingDate2 = checkIn.parse(startDate2);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        String stringToParse3 = "20-02-2019";
+        String stringToParse4 = "25-02-2019";
 
-        DateFormat checkOut = new SimpleDateFormat("dd-MM-yyyy");
-        String endDate = "30-07-2018";
-        Date endingDate = null;
-        try {
-            endingDate = checkOut.parse(endDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Date date3 = df.parse(stringToParse);
+        Date date4 = df.parse(stringToParse2);
+
         Customer customer1 = new Customer("Rebekah", "Dixon");
         Customer customer2 = new Customer("Borna", "Maticic");
         customerRepository.save(customer1);
@@ -79,8 +68,8 @@ public class DataLoader implements ApplicationRunner {
         propertyRepository.save(property2);
         propertyRepository.save(property3);
 
-        Booking booking1 = new Booking(300, customer1, property1,startingDate, endingDate);
-        Booking booking2= new Booking(270, customer2, property2, startingDate2, endingDate);
+        Booking booking1 = new Booking(300, customer1, property1,date, date2);
+        Booking booking2= new Booking(270, customer2, property2, date, date2);
         bookingRepository.save(booking1);
         bookingRepository.save(booking2);
 
