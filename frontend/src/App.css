@@ -129,7 +129,7 @@ li a:hover:not(.active) {
 }
 
 #booking-form-submit{
-  /* visibility: hidden; */
+  visibility: hidden;
   min-width: 20vw;
 }
 

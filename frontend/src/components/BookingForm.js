@@ -25,7 +25,6 @@ class BookingForm extends Component {
     }
     this.props.onCriteriaSubmit(criteria);
     console.log(criteria);
-    document.getElementById('booking-form-submit').style.visibility = 'visible';
   }
 
   handleCustomerSelect(index){
@@ -34,8 +33,7 @@ class BookingForm extends Component {
 
   handlePropertySelect(propertyId){
     this.props.setSelectedProperty(propertyId);
-
-
+    document.getElementById('booking-form-submit').style.visibility = 'visible';
     console.log(this.props.bookingCriteria.startDate);
     console.log(this.props.bookingCriteria.endDate);
   }
