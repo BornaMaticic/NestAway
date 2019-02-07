@@ -12,6 +12,9 @@ const Property = (props) => {
   return (
     <div className="property">
         <Card>
+        <CardContent>
+        {props.property.name}
+        </CardContent>
           <CardMedia
             style={{height:0, paddingTop:'56.25%'}}
             image={props.property.imageUrl}
