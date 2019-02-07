@@ -7,7 +7,6 @@ import NavBar from '../components/NavBar.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
 import PropertyForm from '../components/PropertyForm.js';
-import Bookings from '../components/Bookings.js';
 import CustomerForm from '../components/CustomerForm.js';
 import CustomersList from '../components/CustomersList.js';
 import BookingsList from '../components/BookingsList.js';
@@ -21,12 +20,12 @@ class SiteContainer extends Component{
       properties: [],
       filteredProperties: [],
       customers: [],
-      bookings: []
+      bookings: [],
       selectedCustomer: null,
       selectedProperty: null,
       selectedStartDate: null,
       selectedEndDate: null
-
+    }
 
     this.criteria = null;
     this.bookingInfo = null;
@@ -58,16 +57,16 @@ class SiteContainer extends Component{
 
     const startDateArray = criteria.startDate.split("-");
     const reformattedStartDate = startDateArray[2] + startDateArray[1] + startDateArray[0];
-    this.criteria.startDate = reformattedStartDate;
+    // this.criteria.startDate = reformattedStartDate;
 
     const endDateArray = criteria.endDate.split("-");
-    const reformattedEndDate = endDateArray[2] + endDateArray[1] + endDateArray[0];
-    this.criteria.endDate = reformattedEndDate;
+    const reformattedEndDate = endDateArray[2] +  endDateArray[1] +  endDateArray[0];
+    // this.criteria.endDate = reformattedEndDate;
 
     console.log(criteria);
 
     const request = new Request();
-    request.get(`/api/properties/findproperties/${this.criteria.startDate}/${this.criteria.endDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
+    request.get(`/api/properties/findproperties/${reformattedStartDate}/${reformattedEndDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
       this.setState({filteredProperties: filteredPropertiesData});
     })
   }
@@ -88,40 +87,30 @@ class SiteContainer extends Component{
     })
   }
 
-  // handleBookingPost(){
-  //   const confirmedBooking = {
-  //     "customer_id": this.state.selectedCustomer,
-  //     "property_id": this.state.selectedProperty,
-  //     "startDate": this.state.selectedStartDate,
-  //
-  //   }
-  //   const request = new Request();
-  //   request.post('/api/bookings', confirmedBooking).then(() => {
-  //     window.location = '/bookings'
-  //   })
-  // }
-
   setSelectedCustomer(index){
     console.log(index);
     let newSelectedCustomer = this.state.customers[index].id
     this.setState({selectedCustomer: newSelectedCustomer});
-    // this.selectedCustomer = index;
-    // console.log(this.selectedCustomer);
   }
 
   setSelectedProperty(propertyId){
     console.log(propertyId);
     let newSelectedProperty = propertyId
     this.setState({selectedProperty: newSelectedProperty})
-    // this.selectedProperty = index;
-    // console.log(this.selectedProperty);
   }
 
   render(){
     return (
       <Router>
       <Fragment>
-      <h1>NestAway</h1>
+        <div id="logo-heading-container">
+          <div>
+          <img src="NestAwayLogo.jpg" height="40" alt="of company logo"/>
+          </div>
+          <div>
+          <h1 className="website-header">NestAway</h1>
+          </div>
+        </div>
       <NavBar/>
       <Route exact path="/" component={Home} />
 
@@ -169,12 +158,13 @@ class SiteContainer extends Component{
       <Route path="/bookings" render={() => <BookingsList bookings={this.state.bookings} />
       }
       />
+
       </Fragment>
       </Router>
+
+
     )
   }
-
-
 }
 
   export default SiteContainer;

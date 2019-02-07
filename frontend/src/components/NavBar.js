@@ -17,7 +17,7 @@ class NavBar extends Component {
         </li>
 
         <li>
-          <Link to="/booking">Upcoming Bookings</Link>
+          <Link to="/bookings">Upcoming Bookings</Link>
         </li>
 
         <li>
@@ -29,12 +29,13 @@ class NavBar extends Component {
         </li>
 
         <li>
+          <Link to="/propertyform">New Nest</Link>
+        </li>
+        
+        <li>
           <Link to="/properties">Nests</Link>
         </li>
 
-        <li>
-          <Link to="/propertyform">New Nest</Link>
-        </li>
 
       </ul>
       </>

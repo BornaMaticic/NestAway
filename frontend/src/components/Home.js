@@ -2,10 +2,12 @@ import React from "react";
 
 
 const Home = () => (
- <div>
-   <h4>Home</h4>
-   <p>Welcome to our homepage</p>
+ <div className="homepage">
+
+   <img src="Login_screen.jpg" height="600" alt="dummy login"/>
+
  </div>
+
 );
 
 export default Home;

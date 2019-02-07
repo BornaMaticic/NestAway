@@ -11,7 +11,6 @@ const FilteredProperty = (props) => {
   function onSelect(event){
     event.preventDefault();
     props.sendSelectedProperty(props.property.id)
-    console.log(props.property);
   }
 
   return (
@@ -27,11 +26,9 @@ const FilteredProperty = (props) => {
               {props.property.address}
             </Typography>
             <Typography component="p">
-              {props.property.rating}
+              {props.property.rating} Star Rating
             </Typography>
-            <Typography component="p">
-              {props.property.id}
-            </Typography>
+
           </CardContent>
 
 
