@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
 import PropertyForm from '../components/PropertyForm.js';
-import Bookings from '../components/Bookings.js';
+import Booking from '../components/Booking.js';
 import CustomerForm from '../components/CustomerForm.js';
 import CustomersList from '../components/CustomersList.js';
 import BookingsList from '../components/BookingsList.js';
@@ -121,7 +121,7 @@ class SiteContainer extends Component{
     return (
       <Router>
       <Fragment>
-      <h1>NestAway</h1>
+      <h1 className="website-header">NestAway</h1>
       <NavBar/>
       <Route exact path="/" component={Home} />
 
@@ -169,8 +169,11 @@ class SiteContainer extends Component{
       <Route path="/bookings" render={() => <BookingsList bookings={this.state.bookings} />
       }
       />
+
       </Fragment>
       </Router>
+
+
     )
   }
 

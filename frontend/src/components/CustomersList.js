@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Customer from './Customer.js';
+import Grid from '@material-ui/core/Grid';
 
 
-const CustomersList = (props) => {
-  console.log(props);
-  const customers = props.customers.map(customer => {
+class CustomersList extends Component {
+
+  render(){
+  const customers = this.props.customers.map(customer => {
     return (
+        <Grid item xs={16} sm={6} lg={4} xl={3}>
+          <Customer customer={customer} />
+        </Grid>
+        )
+      })
 
-      <li key={customer.id} className="customer-list">
-        <Customer customer={customer} />
-      </li>
+    return (
+      <Grid container spacing={16}    style={{padding:16}}>
+        {customers}
+      </Grid>
     )
-  })
-
-  return (
-    <ul>
-      {customers}
-    </ul>
-  )
+  }
 
 }
 

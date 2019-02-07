@@ -11,7 +11,6 @@ const FilteredProperty = (props) => {
   function onSelect(event){
     event.preventDefault();
     props.sendSelectedProperty(props.property.id)
-    console.log(props.property);
   }
 
   return (

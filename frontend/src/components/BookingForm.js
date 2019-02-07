@@ -63,19 +63,34 @@ class BookingForm extends Component {
 
   render() {
     return (
-      <Fragment>
+
+      <div className="booking-form-container">
+
+      <div className="margin"/>
+
       <form onSubmit={this.handleCriteriaSubmit}>
+
         <CustomerSelector
           customers={this.props.existingCustomers}
           handleCustomerSelect={this.handleCustomerSelect}
         />
+        <label for="startDate">Check-in Date</label>
         <input type="date" placeholder="Check-in" name="startDate" required/>
+
+        <label for="endDate">Check-out Date</label>
         <input type="date" placeholder="Check-out" name="endDate" required/>
+
+        <label for="capacity">Number of Beds</label>
         <input type="text" placeholder="Capacity" name="capacity" required/>
+
+        <label for="maxPricePerNight">Maximum Price Per Night</label>
         <input type="number" placeholder="Max price per night" name="maxPricePerNight" required/>
 
-        <button type="submit">Display available nests</button>
+        <button id="booking-form-filter" type="submit">Display available nests</button>
       </form>
+
+      <div className="margin"/>
+
 
       <FilteredPropertiesList
         filteredProperties={this.props.filteredProperties}
@@ -87,7 +102,7 @@ class BookingForm extends Component {
         <button type="submit">Confirm booking</button>
       </form>
 
-      </Fragment>
+      </div>
     )
   }
 
