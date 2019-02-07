@@ -44,6 +44,4 @@ public class PropertyController {
         return propertyRepository.findAllPropertiesByDateAndCapacityAndPrice(startDate, endDate, capacity, price);
     }
 
-
-
 }

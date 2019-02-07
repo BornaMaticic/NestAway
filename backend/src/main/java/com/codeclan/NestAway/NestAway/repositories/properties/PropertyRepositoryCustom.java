@@ -1,7 +1,6 @@
 package com.codeclan.NestAway.NestAway.repositories.properties;
 
 import com.codeclan.NestAway.NestAway.models.Property;
-
 import java.util.Date;
 import java.util.List;
 
