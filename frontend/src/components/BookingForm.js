@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import Request from '../helpers/Request.js'
 import FilteredPropertiesList from '../components/FilteredPropertiesList.js';
 import CustomerSelector from './CustomerSelector.js';
@@ -57,7 +57,7 @@ class BookingForm extends Component {
     const reformattedStartDate = startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0];
 
     const endDateArray = this.props.bookingCriteria.endDate.split("-");
-    const reformattedEndDate = startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0];
+    const reformattedEndDate = endDateArray[2] + "-" + endDateArray[1] + "-" + endDateArray[0];
 
 
     const confirmedBooking = {
