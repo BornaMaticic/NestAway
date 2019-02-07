@@ -4,6 +4,7 @@ import Request from '../helpers/Request.js'
 
 import Home from '../components/Home.js';
 import NavBar from '../components/NavBar.js';
+import Footer from '../components/Footer.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
 import PropertyForm from '../components/PropertyForm.js';
@@ -88,40 +89,30 @@ class SiteContainer extends Component{
     })
   }
 
-  // handleBookingPost(){
-  //   const confirmedBooking = {
-  //     "customer_id": this.state.selectedCustomer,
-  //     "property_id": this.state.selectedProperty,
-  //     "startDate": this.state.selectedStartDate,
-  //
-  //   }
-  //   const request = new Request();
-  //   request.post('/api/bookings', confirmedBooking).then(() => {
-  //     window.location = '/bookings'
-  //   })
-  // }
-
   setSelectedCustomer(index){
     console.log(index);
     let newSelectedCustomer = this.state.customers[index].id
     this.setState({selectedCustomer: newSelectedCustomer});
-    // this.selectedCustomer = index;
-    // console.log(this.selectedCustomer);
   }
 
   setSelectedProperty(propertyId){
     console.log(propertyId);
     let newSelectedProperty = propertyId
     this.setState({selectedProperty: newSelectedProperty})
-    // this.selectedProperty = index;
-    // console.log(this.selectedProperty);
   }
 
   render(){
     return (
       <Router>
       <Fragment>
-      <h1 className="website-header">NestAway</h1>
+        <div id="logo-heading-container">
+          <div>
+          <img src="NestAwayLogo.jpeg" height="30"/>
+          </div>
+          <div>
+          <h1 className="website-header">NestAway</h1>
+          </div>
+        </div>
       <NavBar/>
       <Route exact path="/" component={Home} />
 
@@ -170,14 +161,14 @@ class SiteContainer extends Component{
       }
       />
 
+      <Footer/>
+
       </Fragment>
       </Router>
 
 
     )
   }
-
-
 }
 
   export default SiteContainer;

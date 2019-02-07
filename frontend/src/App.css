@@ -5,10 +5,16 @@
   justify-content: center;
 }
 
+html{
+  height: 100%;
+  /* min-height: 100%; */
+}
 body{
   margin: 0;
   padding: 40;
   justify-content: center;
+  height: 100%;
+  /* min-height: 100%; */
 }
 
 h1.website-header{
@@ -27,15 +33,20 @@ h1.website-header{
   width: 10vw;
 }
 
-.booking-form-container{
-  display: flex;
+.form-container{
+   display: flex;
+   align-items: center;
+   justify-content: center;
   flex-direction: column;
+  /* text-align: center; */
 }
 
 form{
+  /* display: inline-block; */
   margin: 20px;
   padding: 10px;
   display: flex;
+  min-width: 40vw;
   max-width: 60vw;
   flex-direction:column;
   border-radius: 5px;
@@ -102,44 +113,68 @@ li a:hover:not(.active) {
 
 }
 
-#booking-form-filter{
+#booking-form-filter-button{
   outline: none;
   /* box-shadow: 0.1px 0.1px 4px 0.1px; */
   border-radius: 5px;
   cursor: pointer;
-
+  /* max-width: 20vw; */
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: 5vw;
 }
 
-#booking-form-filter:hover{
+#booking-form-filter-button:hover{
   background-color: #acacac;
 }
 
-
-
-
-/*form{
-  padding-top: 50px;
-  padding-left: 50px;
-  display: flex;
-  max-width: 30vw;
-  flex-direction:column;
+#booking-form-submit{
+  /* visibility: hidden; */
+  min-width: 20vw;
 }
 
-.property-list{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  text-align: center;
-  background: white;
+#booking-form-submit-button{
+  height: 5vh;
+  /* width: 10vw; */
 }
 
-.property{
-  width: 20vw;
-  padding: 5px;
-  color: black;
+#booking-form-submit-button:hover{
+  background-color: #acacac;
 }
 
-p{
-  text-align: left;
-} */
+.form-submit{
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  height: 5vw;
+}
+
+.form-submit:hover{
+  background-color: #acacac;
+}
+
+#logo-heading-container{
+  display: inline-flex;
+}
+
+.footer-container{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: #585a5e;
+   position: relative;
+   bottom: -80px;
+}
+
+.footer {
+  list-style-type: none;
+  color: white;
+  font-size: 20px;
+  margin: 5px;
+
+}
