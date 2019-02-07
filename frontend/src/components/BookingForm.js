@@ -34,6 +34,10 @@ class BookingForm extends Component {
 
   handlePropertySelect(propertyId){
     this.props.setSelectedProperty(propertyId);
+
+
+    console.log(this.props.bookingCriteria.startDate);
+    console.log(this.props.bookingCriteria.endDate);
   }
 
 
@@ -46,13 +50,22 @@ class BookingForm extends Component {
     event.preventDefault();
     console.log(this.props);
 
+    // const startDate = new Date(this.props.bookingCriteria.startDate).getTime() / 1000;
+    // const endDate = new Date(this.props.bookingCriteria.endDate).getTime() / 1000;
+
+    const startDateArray = this.props.bookingCriteria.startDate.split("-");
+    const reformattedStartDate = startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0];
+
+    const endDateArray = this.props.bookingCriteria.endDate.split("-");
+    const reformattedEndDate = startDateArray[2] + "-" + startDateArray[1] + "-" + startDateArray[0];
+
 
     const confirmedBooking = {
       "customer": `http://localhost:8080/api/customers/${this.props.selectedCustomer}`,
       "property": `http://localhost:8080/api/properties/${this.props.selectedProperty}`,
       "totalPrice": 50,
-      "startDate": `${this.props.bookingCriteria.startDate}`,
-      "endDate": `${this.props.bookingCriteria.endDate}`
+      "startDate": `${reformattedStartDate}`,
+      "endDate": `${reformattedEndDate}`
 
     }
     const request = new Request();

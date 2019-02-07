@@ -59,16 +59,16 @@ class SiteContainer extends Component{
 
     const startDateArray = criteria.startDate.split("-");
     const reformattedStartDate = startDateArray[2] + startDateArray[1] + startDateArray[0];
-    this.criteria.startDate = reformattedStartDate;
+    // this.criteria.startDate = reformattedStartDate;
 
     const endDateArray = criteria.endDate.split("-");
-    const reformattedEndDate = endDateArray[2] + endDateArray[1] + endDateArray[0];
-    this.criteria.endDate = reformattedEndDate;
+    const reformattedEndDate = endDateArray[2] +  endDateArray[1] +  endDateArray[0];
+    // this.criteria.endDate = reformattedEndDate;
 
     console.log(criteria);
 
     const request = new Request();
-    request.get(`/api/properties/findproperties/${this.criteria.startDate}/${this.criteria.endDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
+    request.get(`/api/properties/findproperties/${reformattedStartDate}/${reformattedEndDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
       this.setState({filteredProperties: filteredPropertiesData});
     })
   }
