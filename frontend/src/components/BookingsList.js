@@ -8,7 +8,7 @@ const BookingsList = (props) => {
   const bookings = props.bookings.map (booking => {
 
     return (
-      <Grid item xs={16} sm={6} lg={4} xl={3}>
+      <Grid item xs={12} sm={6} lg={4} xl={3}>
         <Booking booking={booking} />
       </Grid>
     )

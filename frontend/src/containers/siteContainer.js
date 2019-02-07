@@ -4,11 +4,9 @@ import Request from '../helpers/Request.js'
 
 import Home from '../components/Home.js';
 import NavBar from '../components/NavBar.js';
-import Footer from '../components/Footer.js';
 import BookingForm from '../components/BookingForm.js';
 import PropertiesList from '../components/PropertiesList.js';
 import PropertyForm from '../components/PropertyForm.js';
-import Booking from '../components/Booking.js';
 import CustomerForm from '../components/CustomerForm.js';
 import CustomersList from '../components/CustomersList.js';
 import BookingsList from '../components/BookingsList.js';
@@ -59,16 +57,16 @@ class SiteContainer extends Component{
 
     const startDateArray = criteria.startDate.split("-");
     const reformattedStartDate = startDateArray[2] + startDateArray[1] + startDateArray[0];
-    this.criteria.startDate = reformattedStartDate;
+    // this.criteria.startDate = reformattedStartDate;
 
     const endDateArray = criteria.endDate.split("-");
-    const reformattedEndDate = endDateArray[2] + endDateArray[1] + endDateArray[0];
-    this.criteria.endDate = reformattedEndDate;
+    const reformattedEndDate = endDateArray[2] +  endDateArray[1] +  endDateArray[0];
+    // this.criteria.endDate = reformattedEndDate;
 
     console.log(criteria);
 
     const request = new Request();
-    request.get(`/api/properties/findproperties/${this.criteria.startDate}/${this.criteria.endDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
+    request.get(`/api/properties/findproperties/${reformattedStartDate}/${reformattedEndDate}/${this.criteria.capacity}/${this.criteria.maxPricePerNight}`).then((filteredPropertiesData) => {
       this.setState({filteredProperties: filteredPropertiesData});
     })
   }
@@ -107,7 +105,7 @@ class SiteContainer extends Component{
       <Fragment>
         <div id="logo-heading-container">
           <div>
-          <img src="NestAwayLogo.jpeg" height="30"/>
+          <img src="NestAwayLogo.jpg" height="40" alt="of company logo"/>
           </div>
           <div>
           <h1 className="website-header">NestAway</h1>
@@ -160,8 +158,6 @@ class SiteContainer extends Component{
       <Route path="/bookings" render={() => <BookingsList bookings={this.state.bookings} />
       }
       />
-
-      <Footer/>
 
       </Fragment>
       </Router>
