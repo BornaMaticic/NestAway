@@ -4,7 +4,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 
 const Property = (props) => {
@@ -13,7 +17,6 @@ const Property = (props) => {
     <div className="property">
         <Card>
         <CardContent>
-        {props.property.name}
         </CardContent>
           <CardMedia
             style={{height:0, paddingTop:'56.25%'}}
@@ -22,16 +25,28 @@ const Property = (props) => {
           />
           <CardContent>
             <Typography gutterBottom variant="headline" component="h2">
-              {props.property.address}
+              {props.property.name}
             </Typography>
             <Typography component="p">
-              {props.property.rating} Star Rating
+              Capacity: {props.property.capacity}
+              <br/>
+              Price per night: £{props.property.price}
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" href={`http://localhost:8080/api/property/${props.property.id}`} target="_blank">
-              More details
-            </Button>
+            <ExpansionPanel style={{width:'100%', alignItems: 'flex-start'}}>
+              <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+                <Typography>More details</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails style={{width:'100%', textAlign:'left', display:'inline-block'}}>
+                <Typography>
+                  {props.property.address}
+                  <br/>
+                  <br/>
+                  {props.property.rating} Star Rating
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
           </CardActions>
         </Card>
     </div>

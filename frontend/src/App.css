@@ -159,6 +159,8 @@ li a:hover:not(.active) {
   display: inline-flex;
 }
 
+
+
 .footer-container{
    display: flex;
    align-items: center;

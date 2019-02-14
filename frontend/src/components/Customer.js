@@ -3,7 +3,10 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Customer = (props) => {
 
@@ -17,11 +20,15 @@ const Customer = (props) => {
         </CardContent>
 
         <CardActions>
-          <Button size="small"
-          href={`http://localhost:8080/api/customer/${props.customer.id}`}
-          target="_blank">
-          View details
-          </Button>
+        <ExpansionPanel style={{width:'100%', alignItems: 'flex-start'}}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon/>}>
+            <Typography>More details</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails style={{width:'100%', textAlign:'left', display:'inline-block'}}>
+            <Typography>
+            </Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
         </CardActions>
       </Card>
     </div>
