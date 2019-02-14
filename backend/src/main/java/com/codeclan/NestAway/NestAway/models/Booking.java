@@ -1,5 +1,7 @@
 package com.codeclan.NestAway.NestAway.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.text.DateFormat;
@@ -19,9 +21,11 @@ public class Booking implements Serializable {
     private double totalPrice;
 
     @Column(name="start_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date startDate;
 
     @Column(name="end_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date endDate;
 
     @ManyToOne

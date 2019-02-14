@@ -12,6 +12,9 @@ const Property = (props) => {
   return (
     <div className="property">
         <Card>
+        <CardContent>
+        {props.property.name}
+        </CardContent>
           <CardMedia
             style={{height:0, paddingTop:'56.25%'}}
             image={props.property.imageUrl}
@@ -26,7 +29,7 @@ const Property = (props) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary" href="/property/{props.property.id}" target="_blank">
+            <Button size="small" href={`http://localhost:8080/api/property/${props.property.id}`} target="_blank">
               More details
             </Button>
           </CardActions>
